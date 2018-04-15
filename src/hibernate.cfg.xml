@@ -37,6 +37,7 @@
 		<mapping class="br.com.controlpharma.domain.Funcionario" />
 		<mapping class="br.com.controlpharma.domain.Produto" />
 		<mapping class="br.com.controlpharma.domain.Venda" />
+		<mapping class="br.com.controlpharma.domain.Item" />
 
 	</session-factory>
 </hibernate-configuration>
