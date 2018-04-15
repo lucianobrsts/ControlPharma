@@ -30,12 +30,13 @@
 		<property name="hibernate.show_sql">true</property>
 
 		<!-- Cria as tabelas -->
-		<property name="hbm2ddl.auto">update</property>
+		<property name="hbm2ddl.auto">create</property>
 
 
 		<mapping class="br.com.controlpharma.domain.Fabricante" />
 		<mapping class="br.com.controlpharma.domain.Funcionario" />
 		<mapping class="br.com.controlpharma.domain.Produto" />
+		<mapping class="br.com.controlpharma.domain.Venda" />
 
 	</session-factory>
 </hibernate-configuration>
