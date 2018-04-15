@@ -32,5 +32,8 @@
 		<!-- Cria as tabelas -->
 		<property name="hbm2ddl.auto">update</property>
 
+
+		<mapping class="br.com.controlpharma.domain.Fabricante" />
+
 	</session-factory>
 </hibernate-configuration>
