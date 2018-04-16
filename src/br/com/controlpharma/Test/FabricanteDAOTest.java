@@ -25,6 +25,7 @@ public class FabricanteDAOTest {
 	}
 
 	@Test
+	@Ignore
 	public void listar() {
 		FabricanteDAO dao = new FabricanteDAO();
 		List<Fabricante> fabricantes = dao.listar();
@@ -32,6 +33,17 @@ public class FabricanteDAOTest {
 		for (Fabricante fabricante : fabricantes) {
 			System.out.println(fabricante);
 		}
+	}
+
+	@Test
+	public void buscarPorCodigo() {
+		FabricanteDAO dao = new FabricanteDAO();
+
+		Fabricante fabricante = dao.buscarPorCodigo(1L);
+		Fabricante fabricante2 = dao.buscarPorCodigo(13L);
+
+		System.out.println(fabricante);
+		System.out.println(fabricante2);
 	}
 
 }
