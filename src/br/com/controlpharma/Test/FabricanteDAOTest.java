@@ -57,12 +57,31 @@ public class FabricanteDAOTest {
 		if (fabricante != null) {
 			dao.excluir(fabricante);
 		}
+
+		// Fabricante fabricante = new Fabricante();
+		// fabricante.setIdFabricante(5L);
+		// fabricante.setDescricao("DescriçãoA");
+		//
+		// FabricanteDAO dao = new FabricanteDAO();
+		// dao.excluir(fabricante);
 	}
 
 	@Test
+	@Ignore
 	public void excluirPorCodigo() {
 		FabricanteDAO dao = new FabricanteDAO();
 		dao.excluir(8L);
+	}
+
+	@Test
+	@Ignore
+	public void editar() {
+		Fabricante fabricante = new Fabricante();
+		fabricante.setIdFabricante(1L);
+		fabricante.setDescricao("DescriçãoX");
+
+		FabricanteDAO dao = new FabricanteDAO();
+		dao.editar(fabricante);
 	}
 
 }
