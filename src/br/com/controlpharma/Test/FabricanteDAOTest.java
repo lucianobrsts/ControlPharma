@@ -36,6 +36,7 @@ public class FabricanteDAOTest {
 	}
 
 	@Test
+	@Ignore
 	public void buscarPorCodigo() {
 		FabricanteDAO dao = new FabricanteDAO();
 
@@ -44,6 +45,24 @@ public class FabricanteDAOTest {
 
 		System.out.println(fabricante);
 		System.out.println(fabricante2);
+	}
+
+	@Test
+	@Ignore
+	public void excluir() {
+		FabricanteDAO dao = new FabricanteDAO();
+
+		Fabricante fabricante = dao.buscarPorCodigo(13L);
+
+		if (fabricante != null) {
+			dao.excluir(fabricante);
+		}
+	}
+
+	@Test
+	public void excluirPorCodigo() {
+		FabricanteDAO dao = new FabricanteDAO();
+		dao.excluir(8L);
 	}
 
 }
