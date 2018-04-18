@@ -78,34 +78,16 @@ public class FabricanteDAO {
 		}
 	}
 
-	public void excluir(Long idFabricante) {
-		Session sessao = HibernateUtil.getSessionFactory().openSession();
-		Transaction transacao = null;
-
-		try {
-			transacao = sessao.beginTransaction();
-			Fabricante fabricante = buscarPorCodigo(idFabricante);
-			sessao.delete(fabricante);
-			transacao.commit();
-		} catch (RuntimeException ex) {
-			if (transacao != null) {
-				transacao.rollback();
-			}
-		} finally {
-			sessao.close();
-		}
-	}
-
 	public void editar(Fabricante fabricante) {
 		Session sessao = HibernateUtil.getSessionFactory().openSession();
 		Transaction transacao = null;
 
 		try {
 			transacao = sessao.beginTransaction();
-			
+
 			// Fabricante fabricanteEditar = buscarPorCodigo(fabricante.getIdFabricante());
-			//	fabricanteEditar.setDescricao(fabricante.getDescricao());
-			
+			// fabricanteEditar.setDescricao(fabricante.getDescricao());
+
 			sessao.update(fabricante);
 			transacao.commit();
 		} catch (RuntimeException ex) {
