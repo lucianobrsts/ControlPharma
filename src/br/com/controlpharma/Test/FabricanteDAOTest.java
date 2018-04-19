@@ -11,17 +11,12 @@ import br.com.controlpharma.domain.Fabricante;
 public class FabricanteDAOTest {
 
 	@Test
-	@Ignore
 	public void salvar() {
-		Fabricante f1 = new Fabricante();
-		f1.setDescricao("DescriçãoC");
-
-		Fabricante f2 = new Fabricante();
-		f2.setDescricao("DescriçãoD");
+		Fabricante fabricante = new Fabricante();
+		fabricante.setDescricao("DescriçãoC");
 
 		FabricanteDAO dao = new FabricanteDAO();
-		dao.salvar(f1);
-		dao.salvar(f2);
+		dao.salvar(fabricante);
 	}
 
 	@Test

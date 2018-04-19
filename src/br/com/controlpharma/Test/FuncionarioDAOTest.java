@@ -7,7 +7,6 @@ import org.junit.Test;
 
 import br.com.controlpharma.dao.FuncionarioDAO;
 import br.com.controlpharma.domain.Funcionario;
-import jdk.nashorn.internal.runtime.ScriptEnvironment.FunctionStatementBehavior;
 
 public class FuncionarioDAOTest {
 
@@ -40,10 +39,8 @@ public class FuncionarioDAOTest {
 		FuncionarioDAO dao = new FuncionarioDAO();
 
 		Funcionario func1 = dao.buscarPorCodigo(1L);
-		Funcionario func2 = dao.buscarPorCodigo(2L);
 
 		System.out.println(func1);
-		System.out.println(func2);
 	}
 
 	@Test
