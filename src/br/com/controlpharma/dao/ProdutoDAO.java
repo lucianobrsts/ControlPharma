@@ -45,4 +45,21 @@ public class ProdutoDAO {
 		return produtos;
 	}
 
+	public Produto buscarPorCodigo(Long idProduto) {
+		Session sessao = HibernateUtil.getSessionFactory().openSession();
+		Produto produto = null;
+
+		try {
+			Query consulta = sessao.getNamedQuery("Produto.buscarPorCodigo");
+			consulta.setLong("idProduto", idProduto);
+
+			produto = (Produto) consulta.uniqueResult();
+		} catch (RuntimeException ex) {
+			throw ex;
+		} finally {
+			sessao.close();
+		}
+		return produto;
+	}
+
 }
