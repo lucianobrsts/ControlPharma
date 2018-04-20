@@ -1,5 +1,8 @@
 package br.com.controlpharma.dao;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -24,6 +27,22 @@ public class ProdutoDAO {
 		} finally {
 			sessao.close();
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Produto> listar() {
+		Session sessao = HibernateUtil.getSessionFactory().openSession();
+		List<Produto> produtos = null;
+
+		try {
+			Query consulta = sessao.getNamedQuery("Produto.listar");
+			produtos = consulta.list();
+		} catch (RuntimeException ex) {
+			throw ex;
+		} finally {
+			sessao.close();
+		}
+		return produtos;
 	}
 
 }

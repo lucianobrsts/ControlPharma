@@ -67,4 +67,10 @@ public class Venda {
 		this.funcionario = funcionario;
 	}
 
+	@Override
+	public String toString() {
+		return "Venda [idVenda=" + idVenda + ", horario=" + horario + ", valorTotal=" + valorTotal + ", funcionario="
+				+ funcionario + "]";
+	}
+
 }

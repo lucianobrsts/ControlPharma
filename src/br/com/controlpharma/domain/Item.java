@@ -75,4 +75,10 @@ public class Item {
 		this.produto = produto;
 	}
 
+	@Override
+	public String toString() {
+		return "Item [idItens=" + idItens + ", quantidade=" + quantidade + ", valorParcial=" + valorParcial + ", venda="
+				+ venda + ", produto=" + produto + "]";
+	}
+
 }
