@@ -17,12 +17,12 @@ public class ProdutoDAOTest {
 	@Ignore
 	public void salvar() {
 		FabricanteDAO fdao = new FabricanteDAO();
-		Fabricante fabricante = fdao.buscarPorCodigo(1L);
+		Fabricante fabricante = fdao.buscarPorCodigo(2L);
 
 		Produto produto = new Produto();
-		produto.setDescricao("Descricao J");
-		produto.setPreco(new BigDecimal(23.55D));
-		produto.setQuantidade(17);
+		produto.setDescricao("Descricao H");
+		produto.setPreco(new BigDecimal(10.55D));
+		produto.setQuantidade(9);
 		produto.setFabricante(fabricante);
 
 		ProdutoDAO pdao = new ProdutoDAO();
@@ -55,6 +55,24 @@ public class ProdutoDAOTest {
 		Produto produto = dao.buscarPorCodigo(1L);
 
 		dao.excluir(produto);
+	}
+
+	@Test
+	@Ignore
+	public void editar() {
+		ProdutoDAO dao = new ProdutoDAO();
+		Produto produto = dao.buscarPorCodigo(2L);
+
+		produto.setDescricao("Aspirina");
+		produto.setPreco(new BigDecimal(1.29D));
+		produto.setQuantidade(13);
+		
+		
+		FabricanteDAO fabdao = new FabricanteDAO();
+		Fabricante fab = fabdao.buscarPorCodigo(2L);
+		produto.setFabricante(fab);
+
+		dao.editar(produto);
 	}
 
 }
