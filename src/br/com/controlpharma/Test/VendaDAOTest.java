@@ -39,4 +39,14 @@ public class VendaDAOTest {
 		System.out.println(vendas);
 	}
 
+	@Test
+	@Ignore
+	public void buscarPorCodigo() {
+		VendaDAO vendaDAO = new VendaDAO();
+
+		Venda venda = vendaDAO.buscarPorCodigo(5L);
+
+		System.out.println(venda);
+	}
+
 }
