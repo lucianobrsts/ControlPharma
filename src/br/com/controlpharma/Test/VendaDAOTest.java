@@ -49,4 +49,14 @@ public class VendaDAOTest {
 		System.out.println(venda);
 	}
 
+	@Test
+	@Ignore
+	public void excluir() {
+		VendaDAO vendaDAO = new VendaDAO();
+
+		Venda venda = vendaDAO.buscarPorCodigo(2L);
+
+		vendaDAO.excluir(venda);
+	}
+
 }
