@@ -59,4 +59,16 @@ public class VendaDAOTest {
 		vendaDAO.excluir(venda);
 	}
 
+	@Test
+	@Ignore
+	public void editar() {
+		VendaDAO vendaDAO = new VendaDAO();
+
+		Venda venda = vendaDAO.buscarPorCodigo(3L);
+
+		venda.setValorTotal(new BigDecimal(18.30D));
+
+		vendaDAO.editar(venda);
+	}
+
 }
