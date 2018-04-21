@@ -2,6 +2,7 @@ package br.com.controlpharma.Test;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -23,9 +24,19 @@ public class VendaDAOTest {
 		venda.setFuncionario(funcionario);
 		venda.setHorario(new Date());
 		venda.setValorTotal(new BigDecimal(78.34D));
-		
+
 		VendaDAO vendadao = new VendaDAO();
 		vendadao.salvar(venda);
+	}
+
+	@Test
+	@Ignore
+	public void listar() {
+		VendaDAO vendaDAO = new VendaDAO();
+
+		List<Venda> vendas = vendaDAO.listar();
+
+		System.out.println(vendas);
 	}
 
 }
