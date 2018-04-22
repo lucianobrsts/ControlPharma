@@ -67,13 +67,13 @@ public class ItemDAOTest {
 	@Test
 	@Ignore
 	public void editar() {
-		VendaDAO vendaDAO = new VendaDAO();
+		ItemDAO itemDAO = new ItemDAO();
 
-		Venda venda = vendaDAO.buscarPorCodigo(3L);
+		Item item = itemDAO.buscarPorCodigo(3L);
 
-		venda.setValorTotal(new BigDecimal(18.30D));
+		item.setQuantidade(5);
 
-		vendaDAO.editar(venda);
+		itemDAO.editar(item);
 	}
 
 }
