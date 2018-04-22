@@ -10,16 +10,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "itens")
+@Table(name = "item")
+@NamedQueries({ @NamedQuery(name = "Item.listar", query = "SELECT item FROM Item item"),
+		@NamedQuery(name = "Item.buscarPorCodigo", query = "SELECT item FROM Item item WHERE item.idItem = :idItem") })
 public class Item {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "idItens")
-	private Long idItens;
+	@Column(name = "idItem")
+	private Long idItem;
 
 	@Column(name = "quantidade", nullable = false)
 	private Integer quantidade;
@@ -35,12 +39,12 @@ public class Item {
 	@JoinColumn(name = "produto_idProduto", referencedColumnName = "idProduto", nullable = false)
 	private Produto produto;
 
-	public Long getIdItens() {
-		return idItens;
+	public Long getIdItem() {
+		return idItem;
 	}
 
-	public void setIdItens(Long idItens) {
-		this.idItens = idItens;
+	public void setIdItem(Long idItem) {
+		this.idItem = idItem;
 	}
 
 	public Integer getQuantidade() {
@@ -77,7 +81,7 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return "Item [idItens=" + idItens + ", quantidade=" + quantidade + ", valorParcial=" + valorParcial + ", venda="
+		return "Item [idItens=" + idItem + ", quantidade=" + quantidade + ", valorParcial=" + valorParcial + ", venda="
 				+ venda + ", produto=" + produto + "]";
 	}
 
