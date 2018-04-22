@@ -37,11 +37,11 @@ public class ItemDAOTest {
 	@Test
 	@Ignore
 	public void listar() {
-		VendaDAO vendaDAO = new VendaDAO();
+		ItemDAO itemDAO = new ItemDAO();
 
-		List<Venda> vendas = vendaDAO.listar();
+		List<Item> itens = itemDAO.listar();
 
-		System.out.println(vendas);
+		System.out.println(itens);
 	}
 
 	@Test
