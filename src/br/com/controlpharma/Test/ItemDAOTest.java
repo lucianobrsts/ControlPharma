@@ -47,11 +47,11 @@ public class ItemDAOTest {
 	@Test
 	@Ignore
 	public void buscarPorCodigo() {
-		VendaDAO vendaDAO = new VendaDAO();
+		ItemDAO itemDAO = new ItemDAO();
 
-		Venda venda = vendaDAO.buscarPorCodigo(5L);
+		Item item = itemDAO.buscarPorCodigo(3L);
 
-		System.out.println(venda);
+		System.out.println(item);
 	}
 
 	@Test
