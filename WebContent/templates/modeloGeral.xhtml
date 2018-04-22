@@ -24,7 +24,24 @@
 		</p:layoutUnit>
 
 		<p:layoutUnit position="west" size="250">
-			<ui:insert name="menu" />
+			<h:form id="formMenu">
+				<p:panelMenu>
+					<p:submenu label="Arquivo">
+						<p:menuitem value="Principal" outcome="/pages/principal.xhtml" />
+						<p:menuitem value="Sair" />
+					</p:submenu>
+
+					<p:submenu label="Cadastro">
+						<p:menuitem value="Fabricantes" />
+						<p:menuitem value="Produtos" />
+						<p:menuitem value="Funcionários" />
+					</p:submenu>
+
+					<p:submenu label="Vendas">
+
+					</p:submenu>
+				</p:panelMenu>
+			</h:form>
 		</p:layoutUnit>
 
 		<p:layoutUnit position="center" size="100">
