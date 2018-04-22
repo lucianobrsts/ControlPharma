@@ -57,11 +57,11 @@ public class ItemDAOTest {
 	@Test
 	@Ignore
 	public void excluir() {
-		VendaDAO vendaDAO = new VendaDAO();
+		ItemDAO itemDAO = new ItemDAO();
 
-		Venda venda = vendaDAO.buscarPorCodigo(2L);
+		Item item = itemDAO.buscarPorCodigo(2L);
 
-		vendaDAO.excluir(venda);
+		itemDAO.excluir(item);
 	}
 
 	@Test
