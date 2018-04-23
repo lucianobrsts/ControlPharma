@@ -18,10 +18,12 @@
 
 			<h:panelGrid columns="2">
 				<p:outputLabel value="Id:" />
-				<p:inputText size="10" readonly="true" />
+				<p:inputText size="10" readonly="true"
+					value="#{fabricanteBean.fabricanteCadastro.idFabricante}" />
 
 				<p:outputLabel value="Descrição:" />
-				<p:inputText maxlength="50" size="30" />
+				<p:inputText maxlength="50" size="30"
+					value="#{fabricanteBean.fabricanteCadastro.descricao}" />
 			</h:panelGrid>
 
 			<h:panelGrid columns="3">
