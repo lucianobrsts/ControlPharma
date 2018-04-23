@@ -15,14 +15,15 @@
 					<h:outputText value="Fabricantes" />
 				</f:facet>
 			</p:toolbar>
-			
+
 			<br />
 
 			<h:panelGrid columns="4">
 				<p:outputLabel value="Descrição: " />
 				<p:inputText maxlength="30" size="30" />
 				<p:commandButton value="Buscar" />
-				<p:commandButton value="Novo" />
+				<p:commandButton value="Novo"
+					action="/pages/fabricanteCadastro.xhtml?faces-redirect=true" />
 			</h:panelGrid>
 
 			<p:dataTable emptyMessage="Nenhum registro encontrado...">
