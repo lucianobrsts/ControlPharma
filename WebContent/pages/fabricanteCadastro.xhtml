@@ -8,7 +8,7 @@
 
 <ui:composition template="/templates/modeloGeral.xhtml">
 	<ui:define name="conteudo">
-		<h:form>
+		<h:form id="formFabricanteCadastro">
 
 			<p:toolbar>
 				<f:facet name="left">
@@ -16,20 +16,24 @@
 				</f:facet>
 			</p:toolbar>
 
-			<h:panelGrid columns="2">
+			<h:panelGrid columns="2" id="panelFabricanteCadastro">
 				<p:outputLabel value="Id:" />
 				<p:inputText size="10" readonly="true"
 					value="#{fabricanteBean.fabricanteCadastro.idFabricante}" />
 
 				<p:outputLabel value="Descrição:" />
-				<p:inputText maxlength="50" size="30"
+				<p:inputText maxlength="50" size="30" required="true"
+					requiredMessage="Digite um nome para o fabricante!"
 					value="#{fabricanteBean.fabricanteCadastro.descricao}" />
 			</h:panelGrid>
 
 			<h:panelGrid columns="3">
-				<p:commandButton value="Novo" />
+				<p:commandButton value="Novo"
+					actionListener="#{fabricanteBean.novo}"
+					update=":formFabricanteCadastro:panelFabricanteCadastro" />
 				<p:commandButton value="Salvar"
-					actionListener="#{fabricanteBean.salvar}" update=":mensagemGlobal" />
+					actionListener="#{fabricanteBean.salvar}"
+					update=":mensagemGlobal :formFabricanteCadastro:panelFabricanteCadastro" />
 				<p:commandButton value="Voltar"
 					action="/pages/fabricantePesquisa.xhtml?faces-redirect=true" />
 			</h:panelGrid>

@@ -3,6 +3,7 @@ package br.com.controlpharma.bean;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import br.com.controlpharma.dao.FabricanteDAO;
 import br.com.controlpharma.domain.Fabricante;
 import br.com.controlpharma.util.FacesUtil;
 
@@ -22,8 +23,21 @@ public class FabricanteBean {
 		this.fabricanteCadastro = fabricanteCadastro;
 	}
 
-	public void salvar() {
+	public void novo() {
+		fabricanteCadastro = new Fabricante();
+	}
 
-		FacesUtil.adicionarMensagemInfo("Fabricante salvo com sucesso!");
+	public void salvar() {
+		try {
+			FabricanteDAO fabDAO = new FabricanteDAO();
+			fabDAO.salvar(fabricanteCadastro);
+
+			fabricanteCadastro = new Fabricante();
+
+			FacesUtil.adicionarMensagemInfo("Fabricante salvo com sucesso!");
+		} catch (RuntimeException ex) {
+			FacesUtil.adiconarMensagemErro("Erro ao tentar incluir um fabricante: " + ex.getMessage());
+		}
+
 	}
 }
