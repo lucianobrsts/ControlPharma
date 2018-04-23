@@ -18,7 +18,7 @@
 
 			<h:panelGrid columns="2">
 				<p:outputLabel value="Id:" />
-				<p:inputText size="10" readonly="true"/>
+				<p:inputText size="10" readonly="true" />
 
 				<p:outputLabel value="Descrição:" />
 				<p:inputText maxlength="50" size="30" />
@@ -26,8 +26,10 @@
 
 			<h:panelGrid columns="3">
 				<p:commandButton value="Novo" />
-				<p:commandButton value="Salvar" />
-				<p:commandButton value="Voltar" action="/pages/fabricantePesquisa.xhtml?faces-redirect=true" />
+				<p:commandButton value="Salvar"
+					actionListener="#{fabricanteBean.salvar}" update=":mensagemGlobal" />
+				<p:commandButton value="Voltar"
+					action="/pages/fabricantePesquisa.xhtml?faces-redirect=true" />
 			</h:panelGrid>
 		</h:form>
 	</ui:define>

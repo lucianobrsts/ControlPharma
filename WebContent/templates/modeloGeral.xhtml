@@ -10,6 +10,8 @@
 	<title>Control Pharma</title>
 </h:head>
 <h:body>
+	<p:growl id="mensagemGlobal" sticky="true"/>
+
 	<p:layout fullPage="true">
 
 		<p:layoutUnit position="north"
@@ -32,9 +34,11 @@
 					</p:submenu>
 
 					<p:submenu label="Cadastro">
-						<p:menuitem value="Fabricantes" outcome="/pages/fabricantePesquisa.xhtml"/>
+						<p:menuitem value="Fabricantes"
+							outcome="/pages/fabricantePesquisa.xhtml" />
 						<p:menuitem value="Produtos" />
-						<p:menuitem value="Funcionários" outcome="/pages/funcionarioPesquisa.xhtml" />
+						<p:menuitem value="Funcionários"
+							outcome="/pages/funcionarioPesquisa.xhtml" />
 					</p:submenu>
 
 					<p:submenu label="Vendas">
