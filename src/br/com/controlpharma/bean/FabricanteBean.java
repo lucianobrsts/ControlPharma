@@ -61,12 +61,25 @@ public class FabricanteBean {
 
 	}
 
-	public void carregar() {
+	public void carregarPesquisa() {
 		try {
 			FabricanteDAO fabDAO = new FabricanteDAO();
 			listaFabricantes = fabDAO.listar();
 		} catch (RuntimeException ex) {
 			FacesUtil.adiconarMensagemErro("Erro ao tentar listar os fabricantes: " + ex.getMessage());
+		}
+	}
+
+	public void carregarCadastro() {
+		try {
+			String valor = FacesUtil.getParam("fabricanteId");
+			if (valor != null) {
+				Long idFabricante = Long.parseLong(valor);
+				FabricanteDAO fabDAO = new FabricanteDAO();
+				fabricanteCadastro = fabDAO.buscarPorCodigo(idFabricante);
+			}
+		} catch (Exception ex) {
+			FacesUtil.adiconarMensagemErro("Erro ao tentar obter os dados do fabricante: " + ex.getMessage());
 		}
 	}
 }

@@ -10,7 +10,8 @@
 
 	<ui:define name="metadata">
 		<f:metadata>
-			<f:event listener="#{fabricanteBean.carregar}" type="preRenderView" />
+			<f:event listener="#{fabricanteBean.carregarPesquisa}"
+				type="preRenderView" />
 		</f:metadata>
 	</ui:define>
 
@@ -28,10 +29,10 @@
 			<p:dataTable emptyMessage="Nenhum registro encontrado..."
 				value="#{fabricanteBean.listaFabricantes}"
 				filteredValue="#{fabricanteBean.listaFabrcantesFiltrados}"
-				var="fabricante" paginator="true" rows="10">
+				var="fabricante" paginator="true" rows="6">
 
 				<f:facet name="footer">
-					<p:commandButton value="Novo"
+					<p:button value="Novo"
 						action="/pages/fabricanteCadastro.xhtml?faces-redirect=true" />
 				</f:facet>
 
@@ -45,7 +46,13 @@
 				</p:column>
 
 				<p:column headerText="Opção">
+					<p:button value="Excluir" outcome="/pages/fabricanteCadastro.xhtml">
+						<f:param name="fabricanteId" value="#{fabricante.idFabricante}" />
+					</p:button>
 
+					<p:button value="Editar" outcome="/pages/fabricanteCadastro.xhtml">
+						<f:param name="fabricanteId" value="#{fabricante.idFabricante}" />
+					</p:button>
 				</p:column>
 			</p:dataTable>
 		</h:form>
