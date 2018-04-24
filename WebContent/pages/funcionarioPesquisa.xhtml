@@ -40,8 +40,9 @@
 					action="/pages/funcionarioCadastro.xhtml?faces-redirect=true" />
 			</h:panelGrid>
 
-			<p:dataTable emptyMessage="Nenhum registro encontrado...">
-				<p:column headerText="Id">
+			<p:dataTable emptyMessage="Nenhum registro encontrado..."
+				paginator="true">
+				<p:column headerText="Id" width="100" style="text-align: center;">
 
 				</p:column>
 
@@ -57,8 +58,17 @@
 
 				</p:column>
 
-				<p:column headerText="Opções">
+				<p:column headerText="Opções" width="100"
+					style="text-align: center;">
+					<p:button icon="ui-icon-trash"
+						outcome="/pages/funcionarioCadastro.xhtml">
+						<f:param name="" value="" />
+					</p:button>
 
+					<p:button icon="ui-icon-pencil"
+						outcome="/pages/funcionarioCadastro.xhtml">
+						<f:param name="" value="" />
+					</p:button>
 				</p:column>
 			</p:dataTable>
 		</h:form>

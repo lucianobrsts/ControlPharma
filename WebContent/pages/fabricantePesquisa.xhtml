@@ -29,14 +29,14 @@
 			<p:dataTable emptyMessage="Nenhum registro encontrado..."
 				value="#{fabricanteBean.listaFabricantes}"
 				filteredValue="#{fabricanteBean.listaFabrcantesFiltrados}"
-				var="fabricante" paginator="true" rows="6">
+				var="fabricante" paginator="true" rows="10">
 
 				<f:facet name="footer">
 					<p:button value="Novo"
 						action="/pages/fabricanteCadastro.xhtml?faces-redirect=true" />
 				</f:facet>
 
-				<p:column headerText="Id">
+				<p:column headerText="Id" width="100" style="text-align: center;">
 					<h:outputText value="#{fabricante.idFabricante}" />
 				</p:column>
 
