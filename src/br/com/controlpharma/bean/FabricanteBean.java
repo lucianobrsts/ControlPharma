@@ -1,5 +1,7 @@
 package br.com.controlpharma.bean;
 
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -11,6 +13,24 @@ import br.com.controlpharma.util.FacesUtil;
 @ViewScoped
 public class FabricanteBean {
 	private Fabricante fabricanteCadastro;
+	private List<Fabricante> listaFabricantes;
+	private List<Fabricante> listaFabrcantesFiltrados;
+
+	public List<Fabricante> getListaFabricantes() {
+		return listaFabricantes;
+	}
+
+	public void setListaFabricantes(List<Fabricante> listaFabricantes) {
+		this.listaFabricantes = listaFabricantes;
+	}
+
+	public List<Fabricante> getListaFabrcantesFiltrados() {
+		return listaFabrcantesFiltrados;
+	}
+
+	public void setListaFabrcantesFiltrados(List<Fabricante> listaFabrcantesFiltrados) {
+		this.listaFabrcantesFiltrados = listaFabrcantesFiltrados;
+	}
 
 	public Fabricante getFabricanteCadastro() {
 		if (fabricanteCadastro == null) {
@@ -39,5 +59,14 @@ public class FabricanteBean {
 			FacesUtil.adiconarMensagemErro("Erro ao tentar incluir um fabricante: " + ex.getMessage());
 		}
 
+	}
+
+	public void carregar() {
+		try {
+			FabricanteDAO fabDAO = new FabricanteDAO();
+			listaFabricantes = fabDAO.listar();
+		} catch (RuntimeException ex) {
+			FacesUtil.adiconarMensagemErro("Erro ao tentar listar os fabricantes: " + ex.getMessage());
+		}
 	}
 }
