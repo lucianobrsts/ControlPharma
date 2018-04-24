@@ -45,12 +45,14 @@
 					<h:outputText value="#{fabricante.descricao}" />
 				</p:column>
 
-				<p:column headerText="Opção">
-					<p:button value="Excluir" outcome="/pages/fabricanteCadastro.xhtml">
+				<p:column headerText="Opção" width="100" style="text-align: center;">
+					<p:button icon="ui-icon-trash"
+						outcome="/pages/fabricanteCadastro.xhtml">
 						<f:param name="fabricanteId" value="#{fabricante.idFabricante}" />
 					</p:button>
 
-					<p:button value="Editar" outcome="/pages/fabricanteCadastro.xhtml">
+					<p:button icon="ui-icon-pencil"
+						outcome="/pages/fabricanteCadastro.xhtml">
 						<f:param name="fabricanteId" value="#{fabricante.idFabricante}" />
 					</p:button>
 				</p:column>

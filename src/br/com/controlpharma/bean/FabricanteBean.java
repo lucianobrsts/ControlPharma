@@ -33,9 +33,6 @@ public class FabricanteBean {
 	}
 
 	public Fabricante getFabricanteCadastro() {
-		if (fabricanteCadastro == null) {
-			fabricanteCadastro = new Fabricante();
-		}
 		return fabricanteCadastro;
 	}
 
@@ -77,6 +74,8 @@ public class FabricanteBean {
 				Long idFabricante = Long.parseLong(valor);
 				FabricanteDAO fabDAO = new FabricanteDAO();
 				fabricanteCadastro = fabDAO.buscarPorCodigo(idFabricante);
+			} else {
+				fabricanteCadastro = new Fabricante();
 			}
 		} catch (Exception ex) {
 			FacesUtil.adiconarMensagemErro("Erro ao tentar obter os dados do fabricante: " + ex.getMessage());
@@ -97,6 +96,7 @@ public class FabricanteBean {
 	public void editar() {
 		try {
 			FabricanteDAO fabDAO = new FabricanteDAO();
+
 			fabDAO.editar(fabricanteCadastro);
 
 			FacesUtil.adicionarMensagemInfo("Fabricante editado com sucesso!");
