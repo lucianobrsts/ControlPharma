@@ -29,4 +29,9 @@
 		<param-name>primefaces.THEME</param-name>
 		<param-value>ui-lightness</param-value>
 	</context-param>
+
+	<!-- Carregamento do contexto do Hibernate -->
+	<listener>
+		<listener-class>br.com.controlpharma.util.ContextListener</listener-class>
+	</listener>
 </web-app>
