@@ -13,8 +13,19 @@ import br.com.controlpharma.util.FacesUtil;
 @ViewScoped
 public class FabricanteBean {
 	private Fabricante fabricanteCadastro;
+
 	private List<Fabricante> listaFabricantes;
 	private List<Fabricante> listaFabrcantesFiltrados;
+
+	private String acao;
+
+	public String getAcao() {
+		return acao;
+	}
+
+	public void setAcao(String acao) {
+		this.acao = acao;
+	}
 
 	public List<Fabricante> getListaFabricantes() {
 		return listaFabricantes;
@@ -69,7 +80,10 @@ public class FabricanteBean {
 
 	public void carregarCadastro() {
 		try {
+			acao = FacesUtil.getParam("fabricanteAcao");
+
 			String valor = FacesUtil.getParam("fabricanteId");
+			
 			if (valor != null) {
 				Long idFabricante = Long.parseLong(valor);
 				FabricanteDAO fabDAO = new FabricanteDAO();
