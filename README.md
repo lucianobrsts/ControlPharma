@@ -12,6 +12,7 @@ Esse arquivo descreve características e funcionalidades do Projeto Constrol Pha
 - Java
 - JSF
 - Hibernate
+- Hibernate Validation
 - JavaScript
 - Ajax
 - Git
