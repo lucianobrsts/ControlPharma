@@ -41,7 +41,8 @@
 
 				<p:outputLabel value="Função:" />
 				<p:selectOneMenu
-					value="#{funcionarioBean.funcionarioCadastro.funcao}">
+					value="#{funcionarioBean.funcionarioCadastro.funcao}"
+					readonly="#{funcionarioBean.acao == 'Excluir'}">
 					<f:validateBean />
 
 					<f:selectItem itemValue="" itemLabel="Selecione uma função" />
@@ -55,8 +56,9 @@
 				<p:commandButton value="Novo" />
 				<p:commandButton value="Salvar"
 					actionListener="#{funcionarioBean.salvar}" update=":mensagemGlobal" />
-				<p:commandButton value="Voltar"
-					action="/pages/funcionarioPesquisa.xhtml?faces-redirect=true" />
+				
+				<p:button value="Voltar"
+					outcome="/pages/funcionarioPesquisa.xhtml?faces-redirect=true" />
 			</h:panelGrid>
 		</h:form>
 	</ui:define>
