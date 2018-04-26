@@ -9,6 +9,9 @@
 <ui:composition template="/templates/modeloGeral.xhtml">
 	<ui:define name="metadata">
 		<f:metadata>
+			<f:viewParam name="fabricanteId" value="#{fabricanteBean.codigo}" />
+			<f:viewParam name="fabricanteAcao" value="#{fabricanteBean.acao}" />
+			
 			<f:event listener="#{fabricanteBean.carregarCadastro}"
 				type="preRenderView"></f:event>
 		</f:metadata>
