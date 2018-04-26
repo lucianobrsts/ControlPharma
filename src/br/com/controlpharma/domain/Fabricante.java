@@ -8,11 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+@SuppressWarnings("deprecation")
 @Entity
 @Table(name = "fabricante")
 @NamedQueries({ @NamedQuery(name = "Fabricante.listar", query = "SELECT fabricante FROM Fabricante fabricante"),
-				@NamedQuery(name = "Fabricante.buscarPorCodigo", query = "SELECT fabricante FROM Fabricante fabricante WHERE fabricante.idFabricante = :idFabricante") })
+		@NamedQuery(name = "Fabricante.buscarPorCodigo", query = "SELECT fabricante FROM Fabricante fabricante WHERE fabricante.idFabricante = :idFabricante") })
 public class Fabricante {
 
 	@Id
@@ -20,6 +24,8 @@ public class Fabricante {
 	@Column(name = "idFabricante")
 	private Long idFabricante;
 
+	@NotEmpty(message = "O campo descrição é obrigatório!")
+	@Size(min = 5, max = 50, message = "Tamanho inválido para o campo descrição (5 - 50)")
 	@Column(name = "descricao", length = 50, nullable = false)
 	private String descricao;
 

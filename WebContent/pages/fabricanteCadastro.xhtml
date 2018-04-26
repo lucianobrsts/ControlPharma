@@ -11,7 +11,7 @@
 		<f:metadata>
 			<f:viewParam name="fabricanteId" value="#{fabricanteBean.codigo}" />
 			<f:viewParam name="fabricanteAcao" value="#{fabricanteBean.acao}" />
-			
+
 			<f:event listener="#{fabricanteBean.carregarCadastro}"
 				type="preRenderView"></f:event>
 		</f:metadata>
@@ -32,10 +32,13 @@
 					value="#{fabricanteBean.fabricanteCadastro.idFabricante}" />
 
 				<p:outputLabel value="Descrição:" />
-				<p:inputText maxlength="50" size="30" required="true"
-					requiredMessage="Digite um nome para o fabricante!"
+				<p:inputText maxlength="50" size="30"
 					value="#{fabricanteBean.fabricanteCadastro.descricao}"
-					readonly="#{fabricanteBean.acao == 'Excluir'}" />
+					readonly="#{fabricanteBean.acao == 'Excluir'}">
+
+					<f:validateBean />
+
+				</p:inputText>
 			</h:panelGrid>
 
 			<h:panelGrid columns="5">
