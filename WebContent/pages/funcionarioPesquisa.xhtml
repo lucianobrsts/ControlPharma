@@ -8,6 +8,14 @@
 
 <ui:composition template="/templates/modeloGeral.xhtml">
 
+	<ui:define name="metadata">
+		<f:metadata>
+
+			<f:event listener="#{funcionarioBean.carregarPesquisa}"
+				type="preRenderView" />
+		</f:metadata>
+	</ui:define>
+
 	<ui:define name="conteudo">
 		<h:form>
 			<p:toolbar>
@@ -18,56 +26,49 @@
 
 			<br />
 
-			<h:panelGrid columns="6">
-				<p:outputLabel value="Nome: " />
-				<p:inputText maxlength="30" size="30" />
-
-				<p:outputLabel value="CPF:" />
-				<p:inputMask mask="999.999.999-99" size="15" />
-
-				<p:outputLabel value="Função:" />
-				<p:selectOneMenu>
-					<f:selectItem itemLabel="Selecione uma função" />
-					<f:selectItem itemLabel="Administrador" />
-					<f:selectItem itemLabel="Balconista" />
-					<f:selectItem itemLabel="Gerente" />
-				</p:selectOneMenu>
-			</h:panelGrid>
-
-			<h:panelGrid columns="2">
-				<p:commandButton value="Buscar" />
-				<p:commandButton value="Novo"
-					action="/pages/funcionarioCadastro.xhtml?faces-redirect=true" />
-			</h:panelGrid>
 
 			<p:dataTable emptyMessage="Nenhum registro encontrado..."
-				paginator="true">
+				value="#{funcionarioBean.listaFuncionarios}"
+				filteredValue="#{funcionarioBean.listaFuncionariosFiltrados}"
+				var="funcionario" paginator="true" rows="10">
+
+				<f:facet name="footer">
+					<p:button value="Novo"
+						outcome="/pages/funcionarioCadastro.xhtml?faces-redirect=true">
+						<f:param name="funcionarioteAcao" value="Novo" />
+					</p:button>
+				</f:facet>
+
 				<p:column headerText="Id" width="100" style="text-align: center;">
-
+					<h:outputText value="#{funcionario.idFuncionario}" />
 				</p:column>
 
-				<p:column headerText="Nome">
-
+				<p:column headerText="Nome" filterBy="funcionario.nome"
+					sortBy="funcionario.nome">
+					<h:outputText value="#{funcionario.nome}" />
 				</p:column>
 
-				<p:column headerText="CPF">
-
+				<p:column headerText="CPF" filterBy="funcionario.cpf"
+					sortBy="funcionario.cpf">
+					<h:outputText value="#{funcionario.cpf}" />
 				</p:column>
 
-				<p:column headerText="Função">
-
+				<p:column headerText="Função" filterBy="funcionario.funcao"
+					sortBy="funcionario.funcao">
+					<h:outputText value="#{funcionario.funcao}" />
 				</p:column>
 
-				<p:column headerText="Opções" width="100"
-					style="text-align: center;">
+				<p:column headerText="Opção" width="100" style="text-align: center;">
 					<p:button icon="ui-icon-trash"
 						outcome="/pages/funcionarioCadastro.xhtml">
-						<f:param name="" value="" />
+						<f:param name="funcionarioId" value="#{funcionario.idFuncionario}" />
+						<f:param name="fabricanteAcao" value="Excluir" />
 					</p:button>
 
 					<p:button icon="ui-icon-pencil"
 						outcome="/pages/funcionarioCadastro.xhtml">
-						<f:param name="" value="" />
+						<f:param name="funcionarioId" value="#{funcionario.idFuncionario}" />
+						<f:param name="funcionarioAcao" value="Editar" />
 					</p:button>
 				</p:column>
 			</p:dataTable>
