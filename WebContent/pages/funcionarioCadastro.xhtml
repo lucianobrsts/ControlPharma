@@ -26,20 +26,29 @@
 					value="#{funcionarioBean.funcionarioCadastro.nome}" />
 
 				<p:outputLabel value="CPF:" />
-				<p:inputMask mask="999.999.999-99" size="15"
-					value="#{funcionarioBean.funcionarioCadastro.cpf}" />
-
-				<p:outputLabel value="Função:" />
-				<p:selectOneMenu>
-					<f:selectItem itemLabel="Selecione uma função" />
-					<f:selectItem itemLabel="Administrador" />
-					<f:selectItem itemLabel="Balconista" />
-					<f:selectItem itemLabel="Gerente" />
-				</p:selectOneMenu>
+				<p:inputMask mask="999.999.999-99" size="20"
+					value="#{funcionarioBean.funcionarioCadastro.cpf}"
+					readonly="#{fabricanteBean.acao == 'Excluir'}">
+					<f:validateBean />
+				</p:inputMask>
 
 				<p:outputLabel value="Senha:" />
 				<p:password maxlength="8" size="10"
-					value="#{funcionarioBean.funcionarioCadastro.senha}" />
+					value="#{funcionarioBean.funcionarioCadastro.senha}"
+					readonly="#{funcionarioBean.acao == 'Excluir'}">
+					<f:validateBean />
+				</p:password>
+
+				<p:outputLabel value="Função:" />
+				<p:selectOneMenu
+					value="#{funcionarioBean.funcionarioCadastro.funcao}">
+					<f:validateBean />
+
+					<f:selectItem itemValue="" itemLabel="Selecione uma função" />
+					<f:selectItem itemValue="Administrador" itemLabel="Administrador" />
+					<f:selectItem itemValue="Balconista" itemLabel="Balconista" />
+					<f:selectItem itemValue="Gerente" itemLabel="Gerente" />
+				</p:selectOneMenu>
 			</h:panelGrid>
 
 			<h:panelGrid columns="3">
