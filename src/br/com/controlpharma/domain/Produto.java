@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "produto")
@@ -25,6 +27,8 @@ public class Produto {
 	@Column(name = "idProduto")
 	private Long idProduto;
 
+	@NotEmpty(message = "O campo descrição é obrigatório.")
+	@Size(min = 5, max = 50, message = "Tamanho inválido para o campo descrição (5 - 50)")
 	@Column(name = "descricao", length = 50, nullable = false)
 	private String descricao;
 
