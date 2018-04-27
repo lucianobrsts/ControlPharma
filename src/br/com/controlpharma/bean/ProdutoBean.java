@@ -5,9 +5,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import br.com.controlpharma.dao.FabricanteDAO;
 import br.com.controlpharma.dao.ProdutoDAO;
-import br.com.controlpharma.domain.Fabricante;
 import br.com.controlpharma.domain.Produto;
 import br.com.controlpharma.util.FacesUtil;
 
