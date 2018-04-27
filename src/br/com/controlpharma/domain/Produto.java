@@ -13,7 +13,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -32,6 +35,9 @@ public class Produto {
 	@Column(name = "descricao", length = 50, nullable = false)
 	private String descricao;
 
+	@NotNull(message = "O campo preço é obrigatório.")
+	@DecimalMin(value = "0.00", message = "Informe um valor maior ou igual a zero para o campo preço.")
+	@DecimalMax(value = "99999.99", message = "Valores acima de 10 mil reais não são permitidos.")
 	@Column(name = "preco", precision = 7, scale = 2, nullable = false)
 	private BigDecimal preco;
 
