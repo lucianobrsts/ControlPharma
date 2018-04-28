@@ -5,7 +5,9 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import br.com.controlpharma.dao.FabricanteDAO;
 import br.com.controlpharma.dao.ProdutoDAO;
+import br.com.controlpharma.domain.Fabricante;
 import br.com.controlpharma.domain.Produto;
 import br.com.controlpharma.util.FacesUtil;
 
@@ -19,6 +21,8 @@ public class ProdutoBean {
 
 	private String acao;
 	private Long codigo;
+
+	private List<Fabricante> listaFabricantes;
 
 	public Produto getProdutoCadastro() {
 		return produtoCadastro;
@@ -60,6 +64,14 @@ public class ProdutoBean {
 		this.codigo = codigo;
 	}
 
+	public List<Fabricante> getListaFabricantes() {
+		return listaFabricantes;
+	}
+
+	public void setListaFabricantes(List<Fabricante> listaFabricantes) {
+		this.listaFabricantes = listaFabricantes;
+	}
+
 	public void novo() {
 		produtoCadastro = new Produto();
 	}
@@ -96,6 +108,9 @@ public class ProdutoBean {
 			} else {
 				produtoCadastro = new Produto();
 			}
+
+			FabricanteDAO fabricanteDAO = new FabricanteDAO();
+			listaFabricantes = fabricanteDAO.listar();
 		} catch (Exception ex) {
 			FacesUtil.adiconarMensagemErro("Erro ao tentar obter os dados do produto: " + ex.getMessage());
 		}

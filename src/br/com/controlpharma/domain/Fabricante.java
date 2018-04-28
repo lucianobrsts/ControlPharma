@@ -50,4 +50,39 @@ public class Fabricante {
 		return "Fabricante [idFabricante=" + idFabricante + ", descricao=" + descricao + "]";
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((idFabricante == null) ? 0 : idFabricante.hashCode());
+		return result;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Fabricante other = (Fabricante) obj;
+		if (idFabricante == null) {
+			if (other.idFabricante != null)
+				return false;
+		} else if (!idFabricante.equals(other.idFabricante))
+			return false;
+		return true;
+	}
+
 }

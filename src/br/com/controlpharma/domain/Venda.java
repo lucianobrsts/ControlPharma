@@ -77,4 +77,39 @@ public class Venda {
 				+ funcionario + "]";
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((idVenda == null) ? 0 : idVenda.hashCode());
+		return result;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Venda other = (Venda) obj;
+		if (idVenda == null) {
+			if (other.idVenda != null)
+				return false;
+		} else if (!idVenda.equals(other.idVenda))
+			return false;
+		return true;
+	}
+
 }

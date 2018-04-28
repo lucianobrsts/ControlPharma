@@ -30,7 +30,7 @@ public class Funcionario {
 	@Column(name = "nome", length = 50, nullable = false)
 	private String nome;
 
-	@CPF(message="O CPF informado é inválido.")
+	@CPF(message = "O CPF informado é inválido.")
 	@Column(name = "cpf", length = 14, nullable = false, unique = true)
 	private String cpf;
 
@@ -87,6 +87,41 @@ public class Funcionario {
 	public String toString() {
 		return "Funcionario [idFuncionario=" + idFuncionario + ", nome=" + nome + ", cpf=" + cpf + ", senha=" + senha
 				+ ", funcao=" + funcao + "]";
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((idFuncionario == null) ? 0 : idFuncionario.hashCode());
+		return result;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Funcionario other = (Funcionario) obj;
+		if (idFuncionario == null) {
+			if (other.idFuncionario != null)
+				return false;
+		} else if (!idFuncionario.equals(other.idFuncionario))
+			return false;
+		return true;
 	}
 
 }

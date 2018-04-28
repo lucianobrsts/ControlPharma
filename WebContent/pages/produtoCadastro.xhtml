@@ -39,26 +39,26 @@
 				</p:inputText>
 
 				<p:outputLabel value="Preço:" />
-				<p:inputText size="20"
-					value="#{produtoBean.produtoCadastro.preco}"
+				<p:inputText size="20" value="#{produtoBean.produtoCadastro.preco}"
 					readonly="#{produtoBean.acao == 'Excluir'}">
 					<f:validateBean />
 				</p:inputText>
 
 				<p:outputLabel value="Quantidade:" />
-				<p:inputText  size="20"
+				<p:inputText size="20"
 					value="#{produtoBean.produtoCadastro.quantidade}"
 					readonly="#{produtoBean.acao == 'Excluir'}">
 					<f:validateBean />
 				</p:inputText>
 
 				<p:outputLabel value="Fabricante:" />
-				<p:inputText maxlength="50" size="30"
-					value="#{produtoBean.produtoCadastro.descricao}"
-					readonly="#{produtoBean.acao == 'Excluir'}">
+				<p:selectOneMenu value="#{produtoBean.produtoCadastro.fabricante}">
+					<f:selectItem itemValue="" itemLabel="Selecione um item..." />
+					<f:selectItems value="#{produtoBean.listaFabricantes}"
+						var="fabricante" itemValue="#{fabricante}"
+						itemLabel="#{fabricante.descricao}" />
 					<f:validateBean />
-				</p:inputText>
-
+				</p:selectOneMenu>
 			</h:panelGrid>
 
 			<h:panelGrid columns="5">
