@@ -39,7 +39,7 @@
 					</p:button>
 				</f:facet>
 
-				<p:column headerText="Id" width="100" style="text-align: center;">
+				<p:column headerText="Id" style="text-align: center; width:8%;">
 					<h:outputText value="#{funcionario.idFuncionario}" />
 				</p:column>
 
@@ -49,16 +49,16 @@
 				</p:column>
 
 				<p:column headerText="CPF" filterBy="funcionario.cpf"
-					sortBy="funcionario.cpf">
+					sortBy="funcionario.cpf" style="text-align: center; width:20%;">
 					<h:outputText value="#{funcionario.cpf}" />
 				</p:column>
 
 				<p:column headerText="Função" filterBy="funcionario.funcao"
-					sortBy="funcionario.funcao">
+					sortBy="funcionario.funcao" style="text-align: center; width:20%;">
 					<h:outputText value="#{funcionario.funcao}" />
 				</p:column>
 
-				<p:column headerText="Opção" width="100" style="text-align: center;">
+				<p:column headerText="Opção" style="text-align: center; width: 10%;">
 					<p:button icon="ui-icon-trash"
 						outcome="/pages/funcionarioCadastro.xhtml">
 						<f:param name="funcionarioId" value="#{funcionario.idFuncionario}" />

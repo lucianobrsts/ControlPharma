@@ -10,7 +10,7 @@
 
 	<ui:define name="metadata">
 		<f:metadata>
-		
+
 			<f:event listener="#{fabricanteBean.carregarPesquisa}"
 				type="preRenderView" />
 		</f:metadata>
@@ -39,7 +39,7 @@
 					</p:button>
 				</f:facet>
 
-				<p:column headerText="Id" width="100" style="text-align: center;">
+				<p:column headerText="Id" style="text-align: center; width:8%;">
 					<h:outputText value="#{fabricante.idFabricante}" />
 				</p:column>
 
@@ -48,7 +48,7 @@
 					<h:outputText value="#{fabricante.descricao}" />
 				</p:column>
 
-				<p:column headerText="Opção" width="100" style="text-align: center;">
+				<p:column headerText="Opção" style="text-align: center; width: 10%;">
 					<p:button icon="ui-icon-trash"
 						outcome="/pages/fabricanteCadastro.xhtml">
 						<f:param name="fabricanteId" value="#{fabricante.idFabricante}" />
@@ -64,7 +64,6 @@
 			</p:dataTable>
 		</h:form>
 	</ui:define>
-
 </ui:composition>
 
 </html>
