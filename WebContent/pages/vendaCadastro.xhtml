@@ -7,12 +7,10 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <ui:composition template="/templates/modeloGeral.xhtml">
-
 	<ui:define name="metadata">
 		<f:metadata>
-
-			<f:event listener="#{produtoBean.carregarPesquisa}"
-				type="preRenderView" />
+			<f:event listener="#{vendaBean.carregarProdutos}"
+				type="preRenderView"></f:event>
 		</f:metadata>
 	</ui:define>
 
@@ -27,16 +25,9 @@
 			<p:separator />
 
 			<p:dataTable emptyMessage="Nenhum registro encontrado..."
-				value="#{produtoBean.listaProdutos}"
-				filteredValue="#{produtoBean.listaProdutosFiltrados}" var="produto"
+				value="#{vendaBean.listaProdutos}"
+				filteredValue="#{vendaBean.listaProdutosFiltrados}" var="produto"
 				paginator="true" rows="10">
-
-				<f:facet name="footer">
-					<p:button value="Novo"
-						outcome="/pages/produtoCadastro.xhtml?faces-redirect=true">
-						<f:param name="produtoAcao" value="Novo" />
-					</p:button>
-				</f:facet>
 
 				<p:column headerText="Id" style="text-align: center; width: 8%;">
 					<h:outputText value="#{produto.idProduto}" />
@@ -64,22 +55,11 @@
 				</p:column>
 
 				<p:column headerText="Opção" style="text-align: center; width: 10%;">
-					<p:button icon="ui-icon-trash"
-						outcome="/pages/produtoCadastro.xhtml">
-						<f:param name="produtoId" value="#{produto.idProduto}" />
-						<f:param name="produtoAcao" value="Excluir" />
-					</p:button>
-
-					<p:button icon="ui-icon-pencil"
-						outcome="/pages/produtoCadastro.xhtml">
-						<f:param name="produtoId" value="#{produto.idProduto}" />
-						<f:param name="produtoAcao" value="Editar" />
-					</p:button>
+					<p:commandButton icon="ui-icon-plus" />
 				</p:column>
 			</p:dataTable>
 		</h:form>
 	</ui:define>
-
 </ui:composition>
 
 </html>
