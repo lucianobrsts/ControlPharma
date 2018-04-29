@@ -43,18 +43,18 @@
 					<h:outputText value="#{funcionario.idFuncionario}" />
 				</p:column>
 
-				<p:column headerText="Nome" filterBy="funcionario.nome"
-					sortBy="funcionario.nome">
+				<p:column headerText="Nome" filterBy="#{funcionario.nome}"
+					sortBy="#{funcionario.nome}">
 					<h:outputText value="#{funcionario.nome}" />
 				</p:column>
 
-				<p:column headerText="CPF" filterBy="funcionario.cpf"
-					sortBy="funcionario.cpf" style="text-align: center; width:20%;">
+				<p:column headerText="CPF" filterBy="#{funcionario.cpf}"
+					sortBy="#{funcionario.cpf}" style="text-align: center; width:20%;">
 					<h:outputText value="#{funcionario.cpf}" />
 				</p:column>
 
-				<p:column headerText="Função" filterBy="funcionario.funcao"
-					sortBy="funcionario.funcao" style="text-align: center; width:20%;">
+				<p:column headerText="Função" filterBy="#{funcionario.funcao}"
+					sortBy="#{funcionario.funcao}" style="text-align: center; width:20%;">
 					<h:outputText value="#{funcionario.funcao}" />
 				</p:column>
 
