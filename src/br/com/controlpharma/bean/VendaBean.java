@@ -1,11 +1,13 @@
 package br.com.controlpharma.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import br.com.controlpharma.dao.ProdutoDAO;
+import br.com.controlpharma.domain.Item;
 import br.com.controlpharma.domain.Produto;
 import br.com.controlpharma.util.FacesUtil;
 
@@ -14,6 +16,8 @@ import br.com.controlpharma.util.FacesUtil;
 public class VendaBean {
 	private List<Produto> listaProdutos;
 	private List<Produto> listaProdutosFiltrados;
+
+	private List<Item> listaItens;
 
 	public List<Produto> getListaProdutos() {
 		return listaProdutos;
@@ -30,7 +34,18 @@ public class VendaBean {
 	public void setListaProdutosFiltrados(List<Produto> listaProdutosFiltrados) {
 		this.listaProdutosFiltrados = listaProdutosFiltrados;
 	}
-	
+
+	public List<Item> getListaItens() {
+		if(listaItens == null) {
+			listaItens = new ArrayList<>();
+		}
+		return listaItens;
+	}
+
+	public void setListaItem(List<Item> listaItens) {
+		this.listaItens = listaItens;
+	}
+
 	public void carregarProdutos() {
 		try {
 			ProdutoDAO produtoDAO = new ProdutoDAO();
@@ -38,6 +53,15 @@ public class VendaBean {
 		} catch (RuntimeException ex) {
 			FacesUtil.adiconarMensagemErro("Erro ao tentar listar os produtos: " + ex.getMessage());
 		}
+	}
+
+	public void adicionar(Produto produto) {
+		Item item = new Item();
+		item.setProduto(produto);
+		item.setQuantidade(1);
+		item.setValorParcial(produto.getPreco());
+
+		listaItens.add(item);
 	}
 
 }

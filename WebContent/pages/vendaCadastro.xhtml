@@ -15,7 +15,7 @@
 	</ui:define>
 
 	<ui:define name="conteudo">
-		<h:form>
+		<h:form id="formVendaCadastro">
 			<p:toolbar>
 				<f:facet name="left">
 					<h:outputText value="Produtos" />
@@ -27,7 +27,7 @@
 			<p:dataTable emptyMessage="Nenhum registro encontrado..."
 				value="#{vendaBean.listaProdutos}"
 				filteredValue="#{vendaBean.listaProdutosFiltrados}" var="produto"
-				paginator="true" rows="10">
+				paginator="true" rows="3">
 
 				<p:column headerText="Id" style="text-align: center; width: 8%;">
 					<h:outputText value="#{produto.idProduto}" />
@@ -48,14 +48,50 @@
 					<h:outputText value="#{produto.quantidade}" />
 				</p:column>
 
-				<p:column headerText="Fabricante" style="text-align: center; width: 30%;"
+				<p:column headerText="Fabricante"
+					style="text-align: center; width: 30%;"
 					filterBy="produto.fabricante.descricao"
 					sortBy="produto.fabricante.descricao">
 					<h:outputText value="#{produto.fabricante.descricao}" />
 				</p:column>
 
 				<p:column headerText="Opção" style="text-align: center; width: 10%;">
-					<p:commandButton icon="ui-icon-plus" />
+					<p:commandButton icon="ui-icon-plusthick"
+						actionListener="#{vendaBean.adicionar(produto)}"
+						update=":formVendaCadastro:tabelaItens" />
+				</p:column>
+			</p:dataTable>
+
+			<p:separator />
+
+			<p:dataTable id="tabelaItens"
+				emptyMessage="Nenhum registro encontrado..."
+				value="#{vendaBean.listaItens}"
+				filteredValue="#{vendaBean.listaProdutosFiltrados}" var="item"
+				paginator="true" rows="3">
+
+				<p:column headerText="Produto"
+					style="text-align: center; width: 20%;">
+					<h:outputText value="#{item.produto.descricao}" />
+				</p:column>
+
+				<p:column headerText="Fabricante"
+					style="text-align: center; width: 20%;">
+					<h:outputText value="#{item.produto.fabricante.descricao}" />
+				</p:column>
+
+				<p:column headerText="Quantidade"
+					style="text-align: center; width: 10%;">>
+					<h:outputText value="#{item.quantidade}" />
+				</p:column>
+
+				<p:column headerText="Valor Parcial"
+					style="text-align: center; width: 10%;">
+					<h:outputText value="#{item.valor}" />
+				</p:column>
+
+				<p:column headerText="Opção" style="text-align: center; width: 10%;">
+					<p:commandButton icon="ui-icon-minusthick" />
 				</p:column>
 			</p:dataTable>
 		</h:form>
