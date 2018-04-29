@@ -33,12 +33,12 @@
 					<h:outputText value="#{produto.idProduto}" />
 				</p:column>
 
-				<p:column headerText="Descrição" filterBy="produto.descricao"
-					sortBy="produto.descricao">
+				<p:column headerText="Descrição" filterBy="#{produto.descricao}"
+					sortBy="#{produto.descricao}">
 					<h:outputText value="#{produto.descricao}" />
 				</p:column>
 
-				<p:column headerText="Preço" sortBy="produto.preco"
+				<p:column headerText="Preço" sortBy="#{produto.preco}"
 					style="text-align: center; width: 15%;">
 					<h:outputText value="#{produto.preco}" />
 				</p:column>
@@ -68,7 +68,7 @@
 				emptyMessage="Nenhum registro encontrado..."
 				value="#{vendaBean.listaItens}"
 				filteredValue="#{vendaBean.listaProdutosFiltrados}" var="item"
-				paginator="true" rows="3">
+				paginator="true" rows="4">
 
 				<p:column headerText="Produto"
 					style="text-align: center; width: 20%;">
