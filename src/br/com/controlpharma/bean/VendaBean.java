@@ -83,4 +83,20 @@ public class VendaBean {
 
 	}
 
+	public void remover(Item item) {
+		int posicaoEncontrada = -1;
+
+		for (int pos = 0; pos < listaItens.size() && posicaoEncontrada < 0; pos++) {
+			Item ItemTemp = listaItens.get(pos);
+
+			if (ItemTemp.getProduto().equals(item.getProduto())) {
+				posicaoEncontrada = pos;
+			}
+		}
+
+		if (posicaoEncontrada > -1) {
+			listaItens.remove(posicaoEncontrada);
+		}
+	}
+
 }

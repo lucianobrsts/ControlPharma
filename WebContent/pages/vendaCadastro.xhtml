@@ -91,7 +91,9 @@
 				</p:column>
 
 				<p:column headerText="Opção" style="text-align: center; width: 10%;">
-					<p:commandButton icon="ui-icon-minusthick" />
+					<p:commandButton icon="ui-icon-minusthick"
+						actionListener="#{vendaBean.remover(item)}"
+						update=":formVendaCadastro:tabelaItens" />
 				</p:column>
 			</p:dataTable>
 		</h:form>
