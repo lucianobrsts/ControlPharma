@@ -98,10 +98,34 @@
 			</p:dataTable>
 
 			<p:separator />
-			<h:outputText id="txtVendaValorTotal"
-				style="font-size: 30px; text-align: center; color: blue;"
-				value="Valor total: #{vendaBean.vendaCadastro.valorTotal} " />
+
+			<h:panelGrid columns="2">
+				<h:outputText id="txtVendaValorTotal"
+					style="font-size: 30px; text-align: center;"
+					value="Valor total: #{vendaBean.vendaCadastro.valorTotal} " />
+
+				<p:commandButton value="Finalizar Venda"
+					onclick="PF('dialogFinalizarVenda').show();" />
+			</h:panelGrid>
 		</h:form>
+
+		<p:dialog modal="true" draggable="true" resizable="false"
+			closable="true" header="Dados da Venda"
+			widgetVar="dialogFinalizarVenda" appendTo="@(body)">
+			<h:form>
+				<h:panelGrid columns="1">
+					<h:outputText value="Horário: " />
+					<h:outputText value="Funcionário: " />
+					<h:outputText value="Valor Total: " />
+				</h:panelGrid>
+
+				<h:panelGrid columns="2">
+					<p:commandButton value="Salvar" />
+					<p:commandButton value="Voltar"
+						onclick="PF('dialogFinalizarVenda'.hide();)" />
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
 	</ui:define>
 </ui:composition>
 
