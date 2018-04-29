@@ -1,5 +1,6 @@
 package br.com.controlpharma.bean;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class VendaBean {
 	}
 
 	public List<Item> getListaItens() {
-		if(listaItens == null) {
+		if (listaItens == null) {
 			listaItens = new ArrayList<>();
 		}
 		return listaItens;
@@ -56,12 +57,30 @@ public class VendaBean {
 	}
 
 	public void adicionar(Produto produto) {
+		int posicaoEncontrada = -1;
+
+		for (int pos = 0; pos < listaItens.size() && posicaoEncontrada < 0; pos++) {
+			Item ItemTemp = listaItens.get(pos);
+
+			if (ItemTemp.getProduto().equals(produto)) {
+				posicaoEncontrada = pos;
+			}
+		}
+
 		Item item = new Item();
 		item.setProduto(produto);
-		item.setQuantidade(1);
-		item.setValorParcial(produto.getPreco());
 
-		listaItens.add(item);
+		if (posicaoEncontrada < 0) {
+			item.setQuantidade(1);
+			item.setValorParcial(produto.getPreco());
+			listaItens.add(item);
+		} else {
+			Item itemTemp = listaItens.get(posicaoEncontrada);
+			item.setQuantidade(itemTemp.getQuantidade() + 1);
+			item.setValorParcial(produto.getPreco().multiply(new BigDecimal(item.getQuantidade())));
+			listaItens.set(posicaoEncontrada, item);
+		}
+
 	}
 
 }
