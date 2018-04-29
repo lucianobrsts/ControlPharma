@@ -10,6 +10,7 @@ import javax.faces.bean.ViewScoped;
 import br.com.controlpharma.dao.ProdutoDAO;
 import br.com.controlpharma.domain.Item;
 import br.com.controlpharma.domain.Produto;
+import br.com.controlpharma.domain.Venda;
 import br.com.controlpharma.util.FacesUtil;
 
 @ManagedBean
@@ -19,6 +20,8 @@ public class VendaBean {
 	private List<Produto> listaProdutosFiltrados;
 
 	private List<Item> listaItens;
+
+	private Venda vendaCadastro;
 
 	public List<Produto> getListaProdutos() {
 		return listaProdutos;
@@ -44,6 +47,22 @@ public class VendaBean {
 	}
 
 	public void setListaItem(List<Item> listaItens) {
+		this.listaItens = listaItens;
+	}
+
+	public Venda getVendaCadastro() {
+		if (vendaCadastro == null) {
+			vendaCadastro = new Venda();
+			vendaCadastro.setValorTotal(new BigDecimal("0.00"));
+		}
+		return vendaCadastro;
+	}
+
+	public void setVendaCadastro(Venda vendaCadastro) {
+		this.vendaCadastro = vendaCadastro;
+	}
+
+	public void setListaItens(List<Item> listaItens) {
 		this.listaItens = listaItens;
 	}
 
@@ -81,6 +100,8 @@ public class VendaBean {
 			listaItens.set(posicaoEncontrada, item);
 		}
 
+		vendaCadastro.setValorTotal(vendaCadastro.getValorTotal().add(produto.getPreco()));
+
 	}
 
 	public void remover(Item item) {
@@ -96,6 +117,7 @@ public class VendaBean {
 
 		if (posicaoEncontrada > -1) {
 			listaItens.remove(posicaoEncontrada);
+			vendaCadastro.setValorTotal(vendaCadastro.getValorTotal().subtract(item.getValorParcial()));
 		}
 	}
 

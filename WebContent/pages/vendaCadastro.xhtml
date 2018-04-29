@@ -58,7 +58,7 @@
 				<p:column headerText="Opção" style="text-align: center; width: 10%;">
 					<p:commandButton icon="ui-icon-plusthick"
 						actionListener="#{vendaBean.adicionar(produto)}"
-						update=":formVendaCadastro:tabelaItens" />
+						update=":formVendaCadastro:tabelaItens :formVendaCadastro:txtVendaValorTotal" />
 				</p:column>
 			</p:dataTable>
 
@@ -93,9 +93,13 @@
 				<p:column headerText="Opção" style="text-align: center; width: 10%;">
 					<p:commandButton icon="ui-icon-minusthick"
 						actionListener="#{vendaBean.remover(item)}"
-						update=":formVendaCadastro:tabelaItens" />
+						update=":formVendaCadastro:tabelaItens :formVendaCadastro:txtVendaValorTotal" />
 				</p:column>
 			</p:dataTable>
+
+			<p:separator />
+			<h:outputText id="txtVendaValorTotal"
+				value="Valor total: #{vendaBean.vendaCadastro.valorTotal} " />
 		</h:form>
 	</ui:define>
 </ui:composition>
