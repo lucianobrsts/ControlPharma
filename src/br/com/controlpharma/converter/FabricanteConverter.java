@@ -12,8 +12,7 @@ import br.com.controlpharma.domain.Fabricante;
 public class FabricanteConverter implements Converter {
 
 	@Override
-	public Object getAsObject(FacesContext facesContext, UIComponent componente, String valor) {
-
+	public Object getAsObject(FacesContext facesContext, UIComponent component, String valor) {
 		try {
 			Long codigo = Long.parseLong(valor);
 
@@ -27,7 +26,7 @@ public class FabricanteConverter implements Converter {
 	}
 
 	@Override
-	public String getAsString(FacesContext facesContext, UIComponent componente, Object objeto) {
+	public String getAsString(FacesContext facesContext, UIComponent component, Object objeto) {
 		try {
 			Fabricante fabricante = (Fabricante) objeto;
 			Long codigo = fabricante.getIdFabricante();

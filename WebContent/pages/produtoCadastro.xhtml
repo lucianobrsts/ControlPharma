@@ -54,8 +54,9 @@
 				</p:inputText>
 
 				<p:outputLabel value="Fabricante:" />
-				<p:selectOneMenu value="#{produtoBean.produtoCadastro.fabricante}">
-					<f:selectItem itemValue="" itemLabel="Selecione um item..." />
+				<p:selectOneMenu value="#{produtoBean.produtoCadastro.fabricante}"
+					converter="fabricanteConverter">
+					<f:selectItem itemValue="" itemLabel="Selecione um fabricante..." />
 					<f:selectItems value="#{produtoBean.listaFabricantes}"
 						var="fabricante" itemValue="#{fabricante}"
 						itemLabel="#{fabricante.descricao}" />
