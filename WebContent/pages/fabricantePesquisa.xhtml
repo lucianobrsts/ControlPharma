@@ -26,10 +26,9 @@
 
 			<p:separator />
 
-
 			<p:dataTable emptyMessage="Nenhum registro encontrado..."
 				value="#{fabricanteBean.listaFabricantes}"
-				filteredValue="#{fabricanteBean.listaFabrcantesFiltrados}"
+				filteredValue="#{fabricanteBean.listaFabricantesFiltrados}"
 				var="fabricante" paginator="true" rows="10">
 
 				<f:facet name="footer">
@@ -43,8 +42,8 @@
 					<h:outputText value="#{fabricante.idFabricante}" />
 				</p:column>
 
-				<p:column headerText="Descrição" filterBy="fabricante.descricao"
-					sortBy="fabricante.descricao">
+				<p:column headerText="Descrição" filterBy="#{fabricante.descricao}"
+					sortBy="#{fabricante.descricao}">
 					<h:outputText value="#{fabricante.descricao}" />
 				</p:column>
 

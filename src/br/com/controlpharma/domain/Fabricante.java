@@ -25,7 +25,7 @@ public class Fabricante {
 	private Long idFabricante;
 
 	@NotEmpty(message = "O campo descrição é obrigatório!")
-	@Size(min = 5, max = 50, message = "Tamanho inválido para o campo descrição (5 - 50)")
+	@Size(min = 3, max = 50, message = "Tamanho inválido para o campo descrição (3 - 50)")
 	@Column(name = "descricao", length = 50, nullable = false)
 	private String descricao;
 

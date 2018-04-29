@@ -15,7 +15,7 @@ public class FabricanteBean {
 	private Fabricante fabricanteCadastro;
 
 	private List<Fabricante> listaFabricantes;
-	private List<Fabricante> listaFabrcantesFiltrados;
+	private List<Fabricante> listaFabricantesFiltrados;
 
 	private String acao;
 	private Long codigo;
@@ -44,12 +44,12 @@ public class FabricanteBean {
 		this.listaFabricantes = listaFabricantes;
 	}
 
-	public List<Fabricante> getListaFabrcantesFiltrados() {
-		return listaFabrcantesFiltrados;
+	public List<Fabricante> getListaFabricantesFiltrados() {
+		return listaFabricantesFiltrados;
 	}
 
-	public void setListaFabrcantesFiltrados(List<Fabricante> listaFabrcantesFiltrados) {
-		this.listaFabrcantesFiltrados = listaFabrcantesFiltrados;
+	public void setListaFabricantesFiltrados(List<Fabricante> listaFabricantesFiltrados) {
+		this.listaFabricantesFiltrados = listaFabricantesFiltrados;
 	}
 
 	public Fabricante getFabricanteCadastro() {
