@@ -25,7 +25,7 @@
 					<h:outputText value="Fabricantes" />
 				</f:facet>
 			</p:toolbar>
-			
+
 			<p:separator />
 
 			<h:panelGrid columns="2" id="panelFabricanteCadastro">
@@ -47,20 +47,20 @@
 				<p:commandButton value="Novo"
 					actionListener="#{fabricanteBean.novo}"
 					update=":formFabricanteCadastro:panelFabricanteCadastro"
-					rendered="#{fabricanteBean.acao == 'Novo'}" />
+					rendered="#{fabricanteBean.acao == 'Novo' and autenticacaoBean.funcionarioLogado.funcao != 'Balconista'}" />
 
 				<p:commandButton value="Salvar"
 					actionListener="#{fabricanteBean.salvar}"
 					update=":mensagemGlobal :formFabricanteCadastro:panelFabricanteCadastro"
-					rendered="#{fabricanteBean.acao == 'Novo'}" />
+					rendered="#{fabricanteBean.acao == 'Novo' and autenticacaoBean.funcionarioLogado.funcao != 'Balconista'}" />
 
 				<p:commandButton value="Excluir" icon="ui-icon-trash"
 					actionListener="#{fabricanteBean.excluir}" update=":mensagemGlobal"
-					rendered="#{fabricanteBean.acao == 'Excluir'}" />
+					rendered="#{fabricanteBean.acao == 'Excluir' and autenticacaoBean.funcionarioLogado.funcao != 'Balconista'}" />
 
 				<p:commandButton value="Editar" icon="ui-icon-pencil"
 					actionListener="#{fabricanteBean.editar}" update=":mensagemGlobal"
-					rendered="#{fabricanteBean.acao == 'Editar'}" />
+					rendered="#{fabricanteBean.acao == 'Editar' and autenticacaoBean.funcionarioLogado.funcao != 'Balconista'}" />
 
 				<p:button value="Voltar"
 					outcome="/pages/fabricantePesquisa.xhtml?faces-redirect=true" />

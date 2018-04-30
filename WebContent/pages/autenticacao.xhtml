@@ -10,35 +10,35 @@
 	<ui:define name="metadata"></ui:define>
 
 	<ui:define name="conteudo">
-		<h:form>
-			<p:toolbar>
-				<f:facet name="left">
-					<h:outputText value="Autenticação" />
-				</f:facet>
-			</p:toolbar>
 
-			<p:separator />
+		<p:dialog header="Autenticação" closable="false" draggable="true"
+			resizable="false" visible="true">
+			<h:form>
 
-			<h:panelGrid columns="2">
-				<p:outputLabel value="CPF:" />
-				<p:inputMask mask="999.999.999-99" size="20"
-					value="#{autenticacaoBean.funcionarioLogado.cpf}">
-					<f:validateBean />
-				</p:inputMask>
+				<p:separator />
 
-				<p:outputLabel value="Senha:" />
-				<p:password maxlength="8" size="20"
-					value="#{autenticacaoBean.funcionarioLogado.senha}">
-					<f:validateBean />
-				</p:password>
+				<h:panelGrid columns="2">
+					<p:outputLabel value="CPF:" />
+					<p:inputMask mask="999.999.999-99" size="20"
+						value="#{autenticacaoBean.funcionarioLogado.cpf}">
+						<f:validateBean />
+					</p:inputMask>
 
-			</h:panelGrid>
+					<p:outputLabel value="Senha:" />
+					<p:password maxlength="8" size="20"
+						value="#{autenticacaoBean.funcionarioLogado.senha}">
+						<f:validateBean />
+					</p:password>
 
-			<h:panelGrid columns="1">
-				<p:commandButton value="Entrar" update=":mensagemGlobal"
-					actionListener="#{autenticacaoBean.autenticar}" />
-			</h:panelGrid>
-		</h:form>
+				</h:panelGrid>
+
+				<h:panelGrid columns="1">
+					<p:commandButton value="Entrar"
+						update=":mensagemGlobal :formMenu:panelMenu"
+						actionListener="#{autenticacaoBean.autenticar}" />
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
 	</ui:define>
 
 </ui:composition>
