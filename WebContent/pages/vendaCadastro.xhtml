@@ -50,8 +50,8 @@
 
 				<p:column headerText="Fabricante"
 					style="text-align: center; width: 30%;"
-					filterBy="produto.fabricante.descricao"
-					sortBy="produto.fabricante.descricao">
+					filterBy="#{produto.fabricante.descricao}"
+					sortBy="#{produto.fabricante.descricao}">
 					<h:outputText value="#{produto.fabricante.descricao}" />
 				</p:column>
 
