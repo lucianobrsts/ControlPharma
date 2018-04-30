@@ -3,8 +3,6 @@ package br.com.controlpharma.bean;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import org.apache.commons.codec.digest.DigestUtils;
-
 import br.com.controlpharma.dao.FuncionarioDAO;
 import br.com.controlpharma.domain.Funcionario;
 import br.com.controlpharma.util.FacesUtil;
@@ -28,10 +26,9 @@ public class AutenticacaoBean {
 	public void autenticar() {
 		try {
 			FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-			
-			funcionarioLogado = funcionarioDAO.autenticar(funcionarioLogado.getCpf(),
-					DigestUtils.md5Hex(funcionarioLogado.getSenha()));
-			
+
+			funcionarioLogado = funcionarioDAO.autenticar(funcionarioLogado.getCpf(), funcionarioLogado.getSenha());
+
 			if (funcionarioLogado == null) {
 				FacesUtil.adiconarMensagemErro("CPF ou senha inválido");
 			} else {

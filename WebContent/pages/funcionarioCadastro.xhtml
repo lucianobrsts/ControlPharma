@@ -8,17 +8,27 @@
 
 <ui:composition template="/templates/modeloGeral.xhtml">
 
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:viewParam name="funcionarioId" value="#{funcionarioBean.codigo}" />
+			<f:viewParam name="funcionarioAcao" value="#{funcionarioBean.acao}" />
+
+			<f:event listener="#{funcionarioBean.carregarCadastro}"
+				type="preRenderView"></f:event>
+		</f:metadata>
+	</ui:define>
+
 	<ui:define name="conteudo">
-		<h:form>
+		<h:form id="formFuncionarioCadastro">
 			<p:toolbar>
 				<f:facet name="left">
 					<h:outputText value="Funcionários" />
 				</f:facet>
 			</p:toolbar>
-			
+
 			<p:separator />
 
-			<h:panelGrid columns="2">
+			<h:panelGrid columns="2" id="panelFuncionarioCadastro">
 				<p:outputLabel value="Id:" />
 				<p:inputText size="10" readonly="true"
 					value="#{funcionarioBean.funcionarioCadastro.idFuncionario}" />
@@ -54,11 +64,26 @@
 				</p:selectOneMenu>
 			</h:panelGrid>
 
-			<h:panelGrid columns="3">
-				<p:commandButton value="Novo" />
+			<h:panelGrid columns="5">
+				<p:commandButton value="Novo"
+					actionListener="#{funcionarioBean.novo}"
+					update=":mensagemGlobal :formFuncionarioCadastro:panelFuncionarioCadastro"
+					rendered="#{funcionarioBean.acao == 'Novo'}" />
+
 				<p:commandButton value="Salvar"
-					actionListener="#{funcionarioBean.salvar}" update=":mensagemGlobal" />
-				
+					actionListener="#{funcionarioBean.salvar}"
+					update=":mensagemGlobal :formFuncionarioCadastro:panelFuncionarioCadastro"
+					rendered="#{funcionarioBean.acao == 'Novo'}" />
+
+				<p:commandButton value="Excluir" icon="ui-icon-trash"
+					actionListener="#{funcionarioBean.excluir}"
+					update=":mensagemGlobal"
+					rendered="#{funcionarioBean.acao == 'Excluir'}" />
+
+				<p:commandButton value="Editar" icon="ui-icon-pencil"
+					actionListener="#{funcionarioBean.editar}" update=":mensagemGlobal"
+					rendered="#{funcionarioBean.acao == 'Editar'}" />
+
 				<p:button value="Voltar"
 					outcome="/pages/funcionarioPesquisa.xhtml?faces-redirect=true" />
 			</h:panelGrid>
