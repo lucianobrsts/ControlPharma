@@ -9,7 +9,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import br.com.controlpharma.dao.FuncionarioDAO;
+import br.com.controlpharma.dao.ItemDAO;
 import br.com.controlpharma.dao.ProdutoDAO;
+import br.com.controlpharma.dao.VendaDAO;
 import br.com.controlpharma.domain.Funcionario;
 import br.com.controlpharma.domain.Item;
 import br.com.controlpharma.domain.Produto;
@@ -130,6 +132,30 @@ public class VendaBean {
 		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 		Funcionario funcionario = funcionarioDAO.buscarPorCodigo(2L);
 		vendaCadastro.setFuncionario(funcionario);
+	}
+
+	public void salvar() {
+		try {
+			VendaDAO vendaDAO = new VendaDAO();
+			Long codigoVenda = vendaDAO.salvar(vendaCadastro);
+			Venda vendaFK = vendaDAO.buscarPorCodigo(codigoVenda);
+
+			for (Item item : listaItens) {
+				item.setVenda(vendaFK);
+
+				ItemDAO itemDAO = new ItemDAO();
+				itemDAO.salvar(item);
+			}
+
+			vendaCadastro = new Venda();
+			vendaCadastro.setValorTotal(new BigDecimal("0.00"));
+
+			listaItens = new ArrayList<Item>();
+
+			FacesUtil.adicionarMensagemInfo("Venda salva com sucesso.");
+		} catch (RuntimeException ex) {
+			FacesUtil.adiconarMensagemErro("Erro ao tentar salvar a venda.");
+		}
 	}
 
 }
