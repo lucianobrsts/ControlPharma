@@ -2,12 +2,15 @@ package br.com.controlpharma.bean;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import br.com.controlpharma.dao.FuncionarioDAO;
 import br.com.controlpharma.dao.ProdutoDAO;
+import br.com.controlpharma.domain.Funcionario;
 import br.com.controlpharma.domain.Item;
 import br.com.controlpharma.domain.Produto;
 import br.com.controlpharma.domain.Venda;
@@ -119,6 +122,14 @@ public class VendaBean {
 			listaItens.remove(posicaoEncontrada);
 			vendaCadastro.setValorTotal(vendaCadastro.getValorTotal().subtract(item.getValorParcial()));
 		}
+	}
+
+	public void carregarDadosVenda() {
+		vendaCadastro.setHorario(new Date());
+
+		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+		Funcionario funcionario = funcionarioDAO.buscarPorCodigo(2L);
+		vendaCadastro.setFuncionario(funcionario);
 	}
 
 }

@@ -105,18 +105,28 @@
 					value="Valor total: #{vendaBean.vendaCadastro.valorTotal} " />
 
 				<p:commandButton value="Finalizar Venda"
-					onclick="PF('dialogFinalizarVenda').show();" />
+					actionListener="#{vendaBean.carregarDadosVenda}"
+					oncomplete="PF('dialogFinalizarVenda').show();"
+					update=":formFimVendas:panelDadosFinalVendas" />
 			</h:panelGrid>
 		</h:form>
 
 		<p:dialog modal="true" draggable="true" resizable="false"
 			closable="true" header="Dados da Venda"
 			widgetVar="dialogFinalizarVenda" appendTo="@(body)">
-			<h:form>
-				<h:panelGrid columns="1">
-					<h:outputText value="Horário: " />
-					<h:outputText value="Funcionário: " />
-					<h:outputText value="Valor Total: " />
+			<h:form id="formFimVendas">
+				<h:panelGrid columns="2" id="panelDadosFinalVendas">
+					<h:outputText value="Horário:" />
+					<h:outputText value="#{vendaBean.vendaCadastro.horario}">
+						<f:convertDateTime pattern="dd/MM/yyyy HH:mm"
+							timeZone="America/Sao_Paulo" />
+					</h:outputText>
+
+					<h:outputText value="Funcionário:" />
+					<h:outputText value="#{vendaBean.vendaCadastro.funcionario.nome}" />
+
+					<h:outputText value="Valor Total:" />
+					<h:outputText value="#{vendaBean.vendaCadastro.valorTotal}" />
 				</h:panelGrid>
 
 				<h:panelGrid columns="2">
