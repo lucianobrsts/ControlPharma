@@ -2,6 +2,7 @@ package br.com.controlpharma.Test;
 
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -65,6 +66,16 @@ public class FuncionarioDAOTest {
 		func.setSenha("111");
 
 		dao.editar(func);
+	}
+
+	@Test
+	@Ignore
+	public void autenticar() {
+		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+
+		Funcionario funcionario = funcionarioDAO.autenticar("522.704.520-89", "123456");
+
+		Assert.assertNotNull(funcionario);
 	}
 
 }
