@@ -19,4 +19,5 @@ Esse arquivo descreve características e funcionalidades do Projeto Constrol Pha
 - Junit
 - Primefaces
 - Jasper Report
+- Commons Codec MD5 - Criptografia de senha
 - MySQL
