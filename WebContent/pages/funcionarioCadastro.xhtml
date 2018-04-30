@@ -67,7 +67,7 @@
 			<h:panelGrid columns="5">
 				<p:commandButton value="Novo"
 					actionListener="#{funcionarioBean.novo}"
-					update=":mensagemGlobal :formFuncionarioCadastro:panelFuncionarioCadastro"
+					update=":formFuncionarioCadastro:panelFuncionarioCadastro"
 					rendered="#{funcionarioBean.acao == 'Novo'}" />
 
 				<p:commandButton value="Salvar"

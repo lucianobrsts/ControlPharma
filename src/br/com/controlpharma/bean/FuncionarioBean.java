@@ -89,7 +89,7 @@ public class FuncionarioBean {
 
 			listaFuncionarios = funcionarioDAO.listar();
 		} catch (RuntimeException ex) {
-			FacesUtil.adiconarMensagemErro("ERro ao tentar listar os funcionários: " + ex.getMessage());
+			FacesUtil.adiconarMensagemErro("Erro ao tentar listar os funcionários: " + ex.getMessage());
 		}
 
 	}
