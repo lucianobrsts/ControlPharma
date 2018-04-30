@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 
 import br.com.controlpharma.dao.FuncionarioDAO;
@@ -24,9 +25,11 @@ public class VendaBean {
 	private List<Produto> listaProdutos;
 	private List<Produto> listaProdutosFiltrados;
 
+	private Venda vendaCadastro;
 	private List<Item> listaItens;
 
-	private Venda vendaCadastro;
+	@ManagedProperty(value = "#{autenticacaoBean}")
+	private AutenticacaoBean autenticacaoBean;
 
 	public List<Produto> getListaProdutos() {
 		return listaProdutos;
@@ -69,6 +72,14 @@ public class VendaBean {
 
 	public void setListaItens(List<Item> listaItens) {
 		this.listaItens = listaItens;
+	}
+
+	public AutenticacaoBean getAutenticacaoBean() {
+		return autenticacaoBean;
+	}
+
+	public void setAutenticacaoBean(AutenticacaoBean autenticacaoBean) {
+		this.autenticacaoBean = autenticacaoBean;
 	}
 
 	public void carregarProdutos() {
@@ -130,7 +141,10 @@ public class VendaBean {
 		vendaCadastro.setHorario(new Date());
 
 		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-		Funcionario funcionario = funcionarioDAO.buscarPorCodigo(2L);
+		
+		Funcionario funcionario = funcionarioDAO
+				.buscarPorCodigo(autenticacaoBean.getFuncionarioLogado().getIdFuncionario());
+		
 		vendaCadastro.setFuncionario(funcionario);
 	}
 
