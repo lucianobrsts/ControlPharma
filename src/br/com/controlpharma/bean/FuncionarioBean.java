@@ -5,6 +5,8 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 import br.com.controlpharma.dao.FuncionarioDAO;
 import br.com.controlpharma.domain.Funcionario;
 import br.com.controlpharma.util.FacesUtil;
@@ -70,8 +72,11 @@ public class FuncionarioBean {
 	public void salvar() {
 		try {
 			FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+			funcionarioCadastro.setSenha(DigestUtils.md5Hex(funcionarioCadastro.getSenha()));
 			funcionarioDAO.salvar(funcionarioCadastro);
+
 			funcionarioCadastro = new Funcionario();
+
 			FacesUtil.adicionarMensagemInfo("Funcionário salvo com sucesso!");
 		} catch (RuntimeException ex) {
 			FacesUtil.adiconarMensagemErro("Funcionário salvo com sucesso: " + ex.getCause());
@@ -81,6 +86,7 @@ public class FuncionarioBean {
 	public void carregarPesquisa() {
 		try {
 			FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+
 			listaFuncionarios = funcionarioDAO.listar();
 		} catch (RuntimeException ex) {
 			FacesUtil.adiconarMensagemErro("ERro ao tentar listar os funcionários: " + ex.getMessage());
@@ -92,6 +98,7 @@ public class FuncionarioBean {
 		try {
 			if (codigo != null) {
 				FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+
 				funcionarioCadastro = funcionarioDAO.buscarPorCodigo(codigo);
 			} else {
 				funcionarioCadastro = new Funcionario();
@@ -104,6 +111,7 @@ public class FuncionarioBean {
 	public void excluir() {
 		try {
 			FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+
 			funcionarioDAO.excluir(funcionarioCadastro);
 
 			FacesUtil.adicionarMensagemInfo("Funcionário removido com sucesso.");
@@ -115,6 +123,9 @@ public class FuncionarioBean {
 	public void editar() {
 		try {
 			FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+
+			funcionarioCadastro.setSenha(DigestUtils.md5Hex(funcionarioCadastro.getSenha()));
+
 			funcionarioDAO.editar(funcionarioCadastro);
 
 			FacesUtil.adicionarMensagemInfo("Funcionário editado com sucesso.");
@@ -122,7 +133,5 @@ public class FuncionarioBean {
 			FacesUtil.adiconarMensagemErro("Erro ao tentar editar os dados do Funcionário: " + ex.getMessage());
 		}
 	}
-
-	
 
 }
