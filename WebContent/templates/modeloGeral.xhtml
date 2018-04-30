@@ -35,9 +35,11 @@
 						<p:menuitem value="Autenticação"
 							outcome="/pages/autenticacao.xhtml"
 							rendered="#{autenticacaoBean.funcionarioLogado.funcao == null}" />
+						
 						<p:menuitem value="Principal" outcome="/pages/principal.xhtml"
 							rendered="#{autenticacaoBean.funcionarioLogado.funcao != null}" />
-						<p:menuitem value="Sair"
+						
+						<p:menuitem value="Sair" action="#{autenticacaoBean.sair}"
 							rendered="#{autenticacaoBean.funcionarioLogado.funcao != null}" />
 					</p:submenu>
 
@@ -62,7 +64,9 @@
 					<p:submenu label="Relatórios"
 						rendered="#{autenticacaoBean.funcionarioLogado.funcao != null}">
 						<p:menuitem value="Listar produtos" />
+						
 						<p:menuitem value="Listar Vendas" />
+						
 						<p:menuitem value="Vendas por data" />
 					</p:submenu>
 				</p:panelMenu>

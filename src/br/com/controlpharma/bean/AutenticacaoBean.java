@@ -38,4 +38,10 @@ public class AutenticacaoBean {
 		}
 	}
 
+	public String sair() {
+		funcionarioLogado = null;
+
+		return "/pages/autenticacao.xhtml?faces-redirect=true";
+	}
+
 }
