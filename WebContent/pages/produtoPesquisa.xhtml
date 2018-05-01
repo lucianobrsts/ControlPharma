@@ -35,13 +35,13 @@
 				<f:facet name="header">
 					<h:commandLink>
 						<p:graphicImage library="images" name="excel.png" width="24" />
-						<p:dataExporter type="xlsx" target="tabelaProdutos"
+						<p:dataExporter type="xls" target="tabelaProdutos"
 							fileName="produtos" />
 					</h:commandLink>
 
 					<h:commandLink>
 						<p:graphicImage library="images" name="pdf.png" width="24" />
-						<p:dataExporter type="pdf" target="tabelaProdutos"
+						<p:dataExporter type="pdf" target="tabelaProdutos" encoding="ISO-8859-1"
 							fileName="produtos" />
 					</h:commandLink>
 
@@ -91,7 +91,8 @@
 					<h:outputText value="#{produto.fabricante.descricao}" />
 				</p:column>
 
-				<p:column headerText="Opção" style="text-align: center; width: 10%;">
+				<p:column headerText="Opção" style="text-align: center; width: 10%;"
+					exportable="false">
 					<p:button icon="ui-icon-trash"
 						outcome="/pages/produtoCadastro.xhtml">
 						<f:param name="produtoId" value="#{produto.idProduto}" />
