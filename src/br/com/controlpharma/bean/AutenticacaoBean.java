@@ -25,7 +25,7 @@ public class AutenticacaoBean {
 		this.funcionarioLogado = funcionarioLogado;
 	}
 
-	public void autenticar() {
+	public String autenticar() {
 		try {
 			FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 
@@ -34,12 +34,14 @@ public class AutenticacaoBean {
 
 			if (funcionarioLogado == null) {
 				FacesUtil.adiconarMensagemErro("CPF ou senha inválido");
+				return null;
 			} else {
 				FacesUtil.adicionarMensagemInfo("Funcionário autenticado com sucesso.");
+				return "/pages/principal.xhtml?faces-redirect=true";
 			}
-
 		} catch (RuntimeException ex) {
-			FacesUtil.adiconarMensagemErro("Erro ao tentar autenticar no sistema.");
+			FacesUtil.adiconarMensagemErro("Erro ao tentar autenticar no sistema." + ex.getMessage());
+			return null;
 		}
 	}
 
