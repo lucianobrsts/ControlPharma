@@ -15,6 +15,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -40,6 +41,7 @@ public class Produto {
 	@NotNull(message = "O campo preço é obrigatório.")
 	@DecimalMin(value = "0.00", message = "Informe um valor maior ou igual a zero para o campo preço.")
 	@DecimalMax(value = "99999.99", message = "Valores acima de 10 mil reais não são permitidos.")
+	@Digits(integer=5, fraction= 2, message="Informe um valor válido para o campo preço.")
 	@Column(name = "preco", precision = 7, scale = 2, nullable = false)
 	private BigDecimal preco;
 

@@ -41,8 +41,8 @@
 
 					<h:commandLink>
 						<p:graphicImage library="images" name="pdf.png" width="24" />
-						<p:dataExporter type="pdf" target="tabelaProdutos" encoding="ISO-8859-1"
-							fileName="produtos" />
+						<p:dataExporter type="pdf" target="tabelaProdutos"
+							encoding="ISO-8859-1" fileName="produtos" />
 					</h:commandLink>
 
 					<h:commandLink>
@@ -76,7 +76,9 @@
 
 				<p:column headerText="Preço" sortBy="#{produto.preco}"
 					style="text-align: center; width: 15%;">
-					<h:outputText value="#{produto.preco}" />
+				<h:outputText value="#{produto.preco}">
+					<f:convertNumber pattern="0.00" />
+				</h:outputText>
 				</p:column>
 
 				<p:column headerText="Quantidade"

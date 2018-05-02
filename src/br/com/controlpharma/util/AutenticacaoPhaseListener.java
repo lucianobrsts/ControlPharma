@@ -37,7 +37,7 @@ public class AutenticacaoPhaseListener implements PhaseListener {
 
 				Application application = facesContext.getApplication();
 				NavigationHandler navigationHandler = application.getNavigationHandler();
-				navigationHandler.handleNavigation(facesContext, null, "/pages.autenticacao.xhtml?faces-redirect=true");
+				navigationHandler.handleNavigation(facesContext, null, "/pages/autenticacao.xhtml?faces-redirect=true");
 			}
 		}
 
