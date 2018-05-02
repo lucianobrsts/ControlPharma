@@ -71,23 +71,34 @@
 				paginator="true" rows="4">
 
 				<p:column headerText="Produto"
-					style="text-align: center; width: 20%;">
+					style="text-align: center; width: 20%;"
+					footerText="-----------------------------------------">
 					<h:outputText value="#{item.produto.descricao}" />
 				</p:column>
 
 				<p:column headerText="Fabricante"
-					style="text-align: center; width: 20%;">
+					style="text-align: center; width: 20%;"
+					footerText="-----------------------------------------">
 					<h:outputText value="#{item.produto.fabricante.descricao}" />
 				</p:column>
 
 				<p:column headerText="Quantidade"
-					style="text-align: center; width: 10%;">
+					style="text-align: center; width: 15%;"
+					footerText=" QTD total: #{vendaBean.vendaCadastro.quantidadeTotal}">
 					<h:outputText value="#{item.quantidade}" />
 				</p:column>
 
 				<p:column headerText="Valor Parcial"
-					style="text-align: center; width: 10%;">
-					<h:outputText value="#{item.valorParcial}" />
+					style="text-align: center; width: 15%;">
+					<f:facet name="footer">
+						<h:outputText value="Valor Total:" />
+						<h:outputText value="#{vendaBean.vendaCadastro.valorTotal}">
+							<f:convertNumber pattern="0.00" />
+						</h:outputText>
+					</f:facet>
+					<h:outputText value="#{item.valorParcial}">
+						<f:convertNumber pattern="0.00" />
+					</h:outputText>
 				</p:column>
 
 				<p:column headerText="Opção" style="text-align: center; width: 10%;">

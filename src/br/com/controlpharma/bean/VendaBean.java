@@ -61,7 +61,9 @@ public class VendaBean {
 	public Venda getVendaCadastro() {
 		if (vendaCadastro == null) {
 			vendaCadastro = new Venda();
+			vendaCadastro.setHorario(new Date());
 			vendaCadastro.setValorTotal(new BigDecimal("0.00"));
+			vendaCadastro.setQuantidadeTotal(0);
 		}
 		return vendaCadastro;
 	}
@@ -118,6 +120,8 @@ public class VendaBean {
 
 		vendaCadastro.setValorTotal(vendaCadastro.getValorTotal().add(produto.getPreco()));
 
+		vendaCadastro.setQuantidadeTotal(vendaCadastro.getQuantidadeTotal() + 1);
+
 	}
 
 	public void remover(Item item) {
@@ -134,6 +138,8 @@ public class VendaBean {
 		if (posicaoEncontrada > -1) {
 			listaItens.remove(posicaoEncontrada);
 			vendaCadastro.setValorTotal(vendaCadastro.getValorTotal().subtract(item.getValorParcial()));
+
+			vendaCadastro.setQuantidadeTotal(vendaCadastro.getQuantidadeTotal() - item.getQuantidade());
 		}
 	}
 
@@ -141,10 +147,10 @@ public class VendaBean {
 		vendaCadastro.setHorario(new Date());
 
 		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-		
+
 		Funcionario funcionario = funcionarioDAO
 				.buscarPorCodigo(autenticacaoBean.getFuncionarioLogado().getIdFuncionario());
-		
+
 		vendaCadastro.setFuncionario(funcionario);
 	}
 
