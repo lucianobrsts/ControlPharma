@@ -22,8 +22,8 @@ import javax.persistence.Transient;
 @Table(name = "venda")
 @NamedQueries({ @NamedQuery(name = "Venda.listar", query = "SELECT venda FROM Venda venda"),
 		@NamedQuery(name = "Venda.buscarPorCodigo", query = "SELECT venda FROM Venda venda WHERE venda.idVenda = :idVenda") })
-public class Venda {
 
+public class Venda {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "idVenda")

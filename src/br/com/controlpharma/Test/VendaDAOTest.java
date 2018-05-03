@@ -1,6 +1,8 @@
 package br.com.controlpharma.Test;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import br.com.controlpharma.dao.FuncionarioDAO;
 import br.com.controlpharma.dao.VendaDAO;
 import br.com.controlpharma.domain.Funcionario;
 import br.com.controlpharma.domain.Venda;
+import br.com.controlpharma.filter.VendaFilter;
 
 public class VendaDAOTest {
 
@@ -69,6 +72,23 @@ public class VendaDAOTest {
 		venda.setValorTotal(new BigDecimal(18.30D));
 
 		vendaDAO.editar(venda);
+	}
+
+	@Test
+	@Ignore
+	public void buscar() throws ParseException {
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+
+		VendaFilter filtro = new VendaFilter();
+		filtro.setDataInicial(formato.parse("21/04/2018"));
+		filtro.setDataFinal(formato.parse("31/04/2018"));
+
+		VendaDAO vendaDAO = new VendaDAO();
+		List<Venda> vendas = vendaDAO.buscar(filtro);
+
+		for (Venda venda : vendas) {
+			System.out.println(venda);
+		}
 	}
 
 }
