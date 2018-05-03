@@ -17,6 +17,7 @@ import br.com.controlpharma.domain.Funcionario;
 import br.com.controlpharma.domain.Item;
 import br.com.controlpharma.domain.Produto;
 import br.com.controlpharma.domain.Venda;
+import br.com.controlpharma.filter.VendaFilter;
 import br.com.controlpharma.util.FacesUtil;
 
 @ManagedBean
@@ -30,6 +31,28 @@ public class VendaBean {
 
 	@ManagedProperty(value = "#{autenticacaoBean}")
 	private AutenticacaoBean autenticacaoBean;
+
+	private VendaFilter filtro;
+	private List<Venda> listaVendas;
+
+	public List<Venda> getListaVendas() {
+		return listaVendas;
+	}
+
+	public void setListaVendas(List<Venda> listaVendas) {
+		this.listaVendas = listaVendas;
+	}
+
+	public VendaFilter getFiltro() {
+		if (filtro == null) {
+			filtro = new VendaFilter();
+		}
+		return filtro;
+	}
+
+	public void setFiltro(VendaFilter filtro) {
+		this.filtro = filtro;
+	}
 
 	public List<Produto> getListaProdutos() {
 		return listaProdutos;
@@ -175,6 +198,19 @@ public class VendaBean {
 			FacesUtil.adicionarMensagemInfo("Venda salva com sucesso.");
 		} catch (RuntimeException ex) {
 			FacesUtil.adiconarMensagemErro("Erro ao tentar salvar a venda.");
+		}
+	}
+
+	public void buscar() {
+		try {
+			VendaDAO vendaDAO = new VendaDAO();
+			listaVendas = vendaDAO.buscar(filtro);
+
+			for (Venda venda : listaVendas) {
+				System.out.println(venda);
+			}
+		} catch (RuntimeException ex) {
+			FacesUtil.adiconarMensagemErro("Erro ao tentar buscar uma venda: " + ex.getMessage());
 		}
 	}
 
